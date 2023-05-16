@@ -2,7 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 
-import { mainTheme } from "./theme/CommonThemes";
+import { mainTheme } from "./theme/commonThemes";
 import { HomePage } from "./components/HomePage/HomePage";
 
 const App = () => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { categorySlice, store, RootState } from "../../store/store";
 import { Box } from "@mui/material";
-import { ContainerStyle } from "../../theme/CommonThemes";
+import { ContainerStyle } from "../../theme/commonThemes";
 import { useSelector } from "react-redux";
 import { ImageListComponent } from "./ImageListComponent";
 

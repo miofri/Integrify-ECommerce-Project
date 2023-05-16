@@ -4,7 +4,7 @@ import {
   ImageListItemBar,
   ListSubheader,
 } from "@mui/material";
-import { mainTheme } from "../../theme/CommonThemes";
+import { mainTheme } from "../../theme/commonThemes";
 
 export const ImageListComponent = ({
   localCategory,

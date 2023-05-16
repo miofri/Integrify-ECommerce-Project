@@ -1,8 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-type CategoryState = {
-  value: string[];
-};
+import { CategoryState } from "../interface/storeState";
 
 let categoryInitialValue: CategoryState = { value: [] };
 
