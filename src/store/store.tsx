@@ -1,19 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { categorySlice } from "./categorySlice";
 import { CategoryState } from "../interface/storeState";
-
-let categoryInitialValue: CategoryState = { value: [] };
-
-export const categorySlice = createSlice({
-  name: "category",
-  initialState: categoryInitialValue,
-  reducers: {
-    setCategory: (state, action) => {
-      state.value = action.payload;
-    },
-  },
-});
-
-export const { setCategory } = categorySlice.actions;
 
 export const store = configureStore({
   reducer: {

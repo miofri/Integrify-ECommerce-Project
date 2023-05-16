@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { categorySlice, store, RootState } from "../../store/store";
+
+import { store, RootState } from "../../store/store";
 import { Box } from "@mui/material";
 import { ContainerStyle } from "../../theme/commonThemes";
 import { useSelector } from "react-redux";
 import { ImageListComponent } from "./ImageListComponent";
+import { categorySlice } from "../../store/categorySlice";
 
 export const HomePage = () => {
   const [localCategory, setLocalCategory] = useState<string[]>([]);
@@ -29,6 +31,8 @@ export const HomePage = () => {
   }, [categoryValue, loading]);
 
   if (loading === false) {
+    console.log(categoryValue);
+
     return (
       <ContainerStyle>
         <Box>

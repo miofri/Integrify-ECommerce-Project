@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 
 import { mainTheme } from "./theme/commonThemes";
-import { HomePage } from "./components/HomePage/HomePage";
+import { HomePage } from "./components/homepage/HomePage";
+import { CategoryPages } from "./components/categories-pages/categoryPages";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />}></Route>
+            <Route path="/categories" element={<CategoryPages />}></Route>
           </Route>
         </Routes>
       </Router>
@@ -20,8 +22,8 @@ const App = () => {
 };
 
 export default App;
-{
-  /* <button type="submit">
+
+/* <button type="submit">
         login
         <GoogleLogin
           onSuccess={(credentialResponse) => {
@@ -32,4 +34,3 @@ export default App;
           }}
         />
       </button> */
-}

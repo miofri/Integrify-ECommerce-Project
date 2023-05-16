@@ -5,6 +5,7 @@ import {
   ListSubheader,
 } from "@mui/material";
 import { mainTheme } from "../../theme/commonThemes";
+import { Link } from "react-router-dom";
 
 export const ImageListComponent = ({
   localCategory,
@@ -26,10 +27,12 @@ export const ImageListComponent = ({
         </ListSubheader>
       </ImageListItem>
       {localCategory.map((data: any) => (
-        <ImageListItem key={data.id}>
-          <img src={data.image} alt={data.name} />
-          <ImageListItemBar title={data.name}></ImageListItemBar>
-        </ImageListItem>
+        <Link to={"/categories"} state={{ id: data.id }}>
+          <ImageListItem key={data.id}>
+            <img src={data.image} alt={data.name} />
+            <ImageListItemBar title={data.name}></ImageListItemBar>
+          </ImageListItem>
+        </Link>
       ))}
     </ImageList>
   );
