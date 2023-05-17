@@ -6,6 +6,7 @@ import { mainTheme } from "./theme/commonThemes";
 import { HomePage } from "./components/homepage/HomePage";
 import { CategoryPages } from "./components/categoriesPages/categoryPages";
 import { AllProducts } from "./components/products/AllProducts";
+import { SingleProduct } from "./components/products/SingleProduct";
 
 const App = () => {
   return (
@@ -14,8 +15,9 @@ const App = () => {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
-            <Route path="/categories/:categoryId" element={<CategoryPages />} />
             <Route path="/all-products" element={<AllProducts />} />
+            <Route path="/categories/:categoryId" element={<CategoryPages />} />
+            <Route path="/product/:productId" element={<SingleProduct />} />
           </Route>
         </Routes>
       </Router>

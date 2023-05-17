@@ -6,6 +6,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { AllProductsInterface } from "../../interface/productsInterface";
 import { Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const AllProducts = () => {
   const selectProductState = (state: RootState) => state.product;
@@ -31,21 +32,47 @@ export const AllProducts = () => {
     setProducts(productFromStore);
   }, [productFromStore]);
 
-  const handleSort = () => {
+  const handleSortByName = () => {
     const sorted = [...products].sort((a, b) => a.title.localeCompare(b.title));
+    setProducts(sorted);
+  };
+
+  const handleSortByPriceAscending = () => {
+    const sorted = [...products].sort((a, b) => a.price - b.price);
+    setProducts(sorted);
+  };
+
+  const handleSortByPriceDescending = () => {
+    const sorted = [...products].sort((a, b) => b.price - a.price);
     setProducts(sorted);
   };
 
   return (
     <>
       <Box>
-        <Button onClick={() => handleSort()} variant="contained">
-          Sort by name
+        <Button onClick={() => handleSortByName()} variant="contained">
+          Sort by Name
+        </Button>
+        <Button
+          onClick={() => handleSortByPriceAscending()}
+          variant="contained"
+        >
+          Sort by lowest price
+        </Button>
+        <Button
+          onClick={() => handleSortByPriceDescending()}
+          variant="contained"
+        >
+          Sort by highest price
         </Button>
       </Box>
       <div>
         {products.map((data) => (
-          <li style={{ color: "white" }}>{data.title}</li>
+          <Link to={`/product/${data.id}`}>
+            <li style={{ color: "white" }}>
+              {data.title} {data.price}
+            </li>
+          </Link>
         ))}
       </div>
     </>

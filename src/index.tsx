@@ -11,7 +11,7 @@ import { store } from "./store/store";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID!;
-console.log(CLIENT_ID);
+// console.log(CLIENT_ID);
 
 root.render(
   <React.StrictMode>

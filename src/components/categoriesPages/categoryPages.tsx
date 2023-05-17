@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 import { RootState } from "../../store/store";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -49,6 +49,10 @@ export const CategoryPages = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Add to cart</Button>
+                {/*not yet funcitoning */}
+                <Link to={`/product/${data.id}`}>
+                  <Button size="small">More details</Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
