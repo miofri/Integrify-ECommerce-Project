@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CategoryState } from "../interface/storeState";
+import { ArrayInitialState } from "../interface/storeState";
 
-let categoryInitialValue: CategoryState = { value: [] };
+let categoryInitialValue: ArrayInitialState = { value: [] };
 
 export const categorySlice = createSlice({
   name: "category",

@@ -1,15 +1,23 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { categorySlice } from "./categorySlice";
-import { CategoryState } from "../interface/storeState";
+import { ArrayInitialState } from "../interface/storeState";
+import { productSlice } from "./productSlice";
+import {
+  AllProductsInterface,
+  ProductState,
+} from "../interface/productsInterface";
 
 export const store = configureStore({
   reducer: {
     category: categorySlice.reducer,
+    product: productSlice.reducer,
   },
 });
 
+//Maybe need to redefine the type for these?
 export type RootState = {
-  category: CategoryState;
+  category: ArrayInitialState;
+  product: ProductState;
 };
 
 // export const counterSlice = createSlice({

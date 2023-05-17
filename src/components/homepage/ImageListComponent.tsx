@@ -14,7 +14,21 @@ export const ImageListComponent = ({
 }) => {
   return (
     <ImageList sx={{ width: "100%", textAlign: "center" }}>
-      <ImageListItem key="Subheader" cols={2}>
+      <ImageListItem key="all-products" cols={2}>
+        <Link to={"/all-products"}>
+          <ListSubheader
+            component="div"
+            sx={{
+              backgroundColor: mainTheme.palette.divider,
+              color: mainTheme.palette.secondary.main,
+              textAlign: "center",
+            }}
+          >
+            Click to show all products
+          </ListSubheader>
+        </Link>
+      </ImageListItem>
+      <ImageListItem key="subheader" cols={2}>
         <ListSubheader
           component="div"
           sx={{

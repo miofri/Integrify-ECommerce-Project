@@ -1,3 +1,3 @@
-export type CategoryState = {
+export type ArrayInitialState = {
   value: string[];
 };

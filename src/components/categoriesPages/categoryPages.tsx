@@ -7,7 +7,6 @@ import axios from "axios";
 import {
   Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,

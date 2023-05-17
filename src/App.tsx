@@ -4,7 +4,8 @@ import { ThemeProvider } from "@mui/material";
 
 import { mainTheme } from "./theme/commonThemes";
 import { HomePage } from "./components/homepage/HomePage";
-import { CategoryPages } from "./components/categories-pages/categoryPages";
+import { CategoryPages } from "./components/categoriesPages/categoryPages";
+import { AllProducts } from "./components/products/AllProducts";
 
 const App = () => {
   return (
@@ -12,11 +13,9 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/">
-            <Route index element={<HomePage />}></Route>
-            <Route
-              path="/categories/:categoryId"
-              element={<CategoryPages />}
-            ></Route>
+            <Route index element={<HomePage />} />
+            <Route path="/categories/:categoryId" element={<CategoryPages />} />
+            <Route path="/all-products" element={<AllProducts />} />
           </Route>
         </Routes>
       </Router>
