@@ -27,7 +27,7 @@ export const ImageListComponent = ({
         </ListSubheader>
       </ImageListItem>
       {localCategory.map((data: any) => (
-        <Link to={"/categories"} state={{ id: data.id }}>
+        <Link to={`/categories/${data.id}`}>
           <ImageListItem key={data.id}>
             <img src={data.image} alt={data.name} />
             <ImageListItemBar title={data.name}></ImageListItemBar>

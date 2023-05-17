@@ -13,7 +13,10 @@ const App = () => {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />}></Route>
-            <Route path="/categories" element={<CategoryPages />}></Route>
+            <Route
+              path="/categories/:categoryId"
+              element={<CategoryPages />}
+            ></Route>
           </Route>
         </Routes>
       </Router>
