@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { useEffect } from "react";
-import { ArrayInitialState } from "../interface/storeState";
 import { ProductState } from "../interface/productsInterface";
 
 let productsInitialValue: ProductState = { products: [] };
