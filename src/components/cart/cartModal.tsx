@@ -5,6 +5,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { cartSlice } from "../../store/cartSlice";
 import { AllProductsInterface } from "../../interface/productsInterface";
+import { AllProducts } from "../products/AllProducts";
 
 //Copy pasted style from MUI just to make sure modal is working
 const style = {
@@ -32,6 +33,19 @@ export const CartModal = () => {
   const handleCartItemDelete = (data: AllProductsInterface) => {
     store.dispatch(cartSlice.actions.deleteProduct(data));
   };
+  const handleAddItem = (data: AllProductsInterface) => {
+    store.dispatch(cartSlice.actions.addProduct(data));
+  };
+  const handleReduceQuantity = (data: AllProductsInterface) => {
+    const item = cartFromStore.find(
+      (cartData) => cartData.product.id === data.id
+    );
+    if (item && item.quantity > 1) {
+      store.dispatch(cartSlice.actions.reduceQuantity(data));
+    } else {
+      store.dispatch(cartSlice.actions.deleteProduct(data));
+    }
+  };
 
   return (
     <>
@@ -43,13 +57,27 @@ export const CartModal = () => {
           {cartFromStore.map((data) => (
             <Box sx={{ marginTop: "10px" }}>
               <div>
-                {data.product.title} {data.product.price}e QUANTITY:{" "}
-                {data.quantity}
+                {data.product.title} {data.product.price}e
               </div>
               <div>{data.product.description}</div>
               <Button onClick={() => handleCartItemDelete(data.product)}>
                 Delete Item
               </Button>
+              <div>
+                <Button
+                  variant="outlined"
+                  onClick={() => handleAddItem(data.product)}
+                >
+                  +
+                </Button>
+                {data.quantity}
+                <Button
+                  variant="outlined"
+                  onClick={() => handleReduceQuantity(data.product)}
+                >
+                  -
+                </Button>
+              </div>
             </Box>
           ))}
         </Box>
