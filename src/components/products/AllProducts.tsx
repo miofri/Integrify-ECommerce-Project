@@ -1,7 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { RootState, store } from "../../store/store";
-import { productSlice } from "../../store/productSlice";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { AllProductsInterface } from "../../interface/productsInterface";
@@ -17,16 +15,6 @@ export const AllProducts = () => {
   const productFromStore = useSelector(selectProduct).products;
   const [products, setProducts] =
     useState<AllProductsInterface[]>(productFromStore);
-
-  useEffect(() => {
-    const waitProducts = async () => {
-      const response = await axios.get(
-        "https://api.escuelajs.co/api/v1/products"
-      );
-      store.dispatch(productSlice.actions.setProduct(response.data));
-    };
-    waitProducts();
-  }, []);
 
   useEffect(() => {
     setProducts(productFromStore);

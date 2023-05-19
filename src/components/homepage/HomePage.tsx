@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import LoginIcon from "@mui/icons-material/Login";
+import { Box, Button } from "@mui/material";
 
 import { store, RootState } from "../../store/store";
-import { Box } from "@mui/material";
 import { ContainerStyle } from "../../theme/commonThemes";
-import { useSelector } from "react-redux";
 import { ImageListComponent } from "./ImageListComponent";
 import { categorySlice } from "../../store/categorySlice";
 
@@ -36,6 +37,9 @@ export const HomePage = () => {
     return (
       <ContainerStyle>
         <Box>
+          <Button href="/login" variant="outlined" type="submit">
+            Sign in <LoginIcon />
+          </Button>
           <ImageListComponent localCategory={localCategory} />
         </Box>
       </ContainerStyle>

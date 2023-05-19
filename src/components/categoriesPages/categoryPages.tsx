@@ -41,6 +41,9 @@ export const CategoryPages = () => {
   return (
     <>
       <CartModal />
+      <Button href="/" variant="outlined">
+        Back to start
+      </Button>
       <Container sx={{ maxWidth: "md" }}>
         <Grid container spacing={2}>
           {currentItems.map((data: any) => (
