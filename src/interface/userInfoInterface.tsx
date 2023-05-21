@@ -11,7 +11,7 @@ export interface UserCredentials {
 
 export interface UserCart {
   user: UserCredentials;
-  cart: CartInterface[];
+  cart?: CartInterface[];
 }
 
 export interface UserCredentialsAndCart {

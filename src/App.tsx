@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { productSlice } from "./store/productSlice";
 import { store } from "./store/store";
 import { Login } from "./components/user/Login";
+import { userCartSlice } from "./store/userCartSlice";
 
 const App = () => {
   useEffect(() => {
@@ -21,7 +22,13 @@ const App = () => {
       );
       store.dispatch(productSlice.actions.setProduct(response.data));
     };
+
+    const waitUsers = async () => {
+      const response = await axios.get("https://api.escuelajs.co/api/v1/users");
+      store.dispatch(userCartSlice.actions.setUser(response.data));
+    };
     waitProducts();
+    waitUsers();
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { ProductState } from "../interface/productsInterface";
 
 let productsInitialValue: ProductState = { products: [] };
