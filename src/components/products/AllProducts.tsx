@@ -10,7 +10,7 @@ import {
   handleSortByPriceAscending,
   handleSortByPriceDescending,
 } from "./sortingFunctions";
-import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 
 export const AllProducts = () => {
   const handleGoToHomePage = useHandleGoToHomePage();

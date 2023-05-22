@@ -9,6 +9,9 @@ import { ContainerStyle } from "../../theme/commonThemes";
 import { ImageListComponent } from "./ImageListComponent";
 import { categorySlice } from "../../store/categorySlice";
 import { Users } from "../../interface/userInfoInterface";
+import { LoggedInUser } from "../user/LoggedInUser";
+import { useHandleGoToProfilePage } from "../../utils/buttonNavigate";
+import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 
 export const HomePage = () => {
   const [localCategory, setLocalCategory] = useState<string[]>([]);
@@ -17,8 +20,7 @@ export const HomePage = () => {
     (state: RootState) => state.loggedInUser.loggedIn
   );
   const categoryValue = useSelector((state: RootState) => state.category.value);
-
-  console.log(loggedInValue);
+  const handleGoToProfilePage = useHandleGoToProfilePage();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -37,14 +39,30 @@ export const HomePage = () => {
     }
   }, [categoryValue, loading]);
 
+  const handleLogOut = () => {
+    console.log("clicled");
+    store.dispatch(LoggedInUserSlice.actions.setInitialValue());
+  };
+
   if (loading === false) {
     console.log(categoryValue);
-
     return (
       <ContainerStyle>
         <Box>
           {loggedInValue ? (
-            <></>
+            <>
+              <LoggedInUser />
+              <Button onClick={handleGoToProfilePage} variant="outlined">
+                Go to profile
+              </Button>
+              <Button
+                href="/"
+                onClick={() => handleLogOut()}
+                variant="outlined"
+              >
+                Log out
+              </Button>
+            </>
           ) : (
             <Button href="/login" variant="outlined" type="submit">
               Sign in <LoginIcon />

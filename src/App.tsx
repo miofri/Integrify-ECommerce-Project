@@ -14,6 +14,7 @@ import { Login } from "./components/user/Login";
 import { usersSlice } from "./store/usersSlice";
 import { waitProductsThunk } from "./store/thunksFunctions/waitProductsThunk";
 import { useAppDispatch } from "./store/hooks";
+import { Profile } from "./components/user/Profile";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/categories/:categoryId" element={<CategoryPages />} />
             <Route path="/product/:productId" element={<SingleProduct />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Router>

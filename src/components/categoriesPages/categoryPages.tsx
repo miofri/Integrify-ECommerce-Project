@@ -17,7 +17,7 @@ import {
 import { cartSlice } from "../../store/cartSlice";
 import { CartModal } from "../cart/cartModal";
 import { AllProductsInterface } from "../../interface/productsInterface";
-import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 
 export const CategoryPages = () => {
   const [currentItems, setCurrentItems] = useState([]);

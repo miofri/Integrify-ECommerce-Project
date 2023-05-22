@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { AllProductsInterface } from "../../interface/productsInterface";
 import { defaultState } from "../../interface/singleProductInterface";
 import { Button, Fade } from "@mui/material";
-import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();

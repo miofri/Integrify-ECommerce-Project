@@ -27,7 +27,10 @@ export const LoggedInUserSlice = createSlice({
       state.avatar = avatar;
       state.loggedIn = loggedIn;
     },
+    setInitialValue: (state) => {
+      state = userInitialState;
+    },
   },
 });
 
-export const { setLoggedUser } = LoggedInUserSlice.actions;
+export const { setLoggedUser, setInitialValue } = LoggedInUserSlice.actions;

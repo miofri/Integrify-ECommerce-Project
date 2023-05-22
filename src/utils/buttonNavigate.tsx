@@ -7,3 +7,11 @@ export const useHandleGoToHomePage = () => {
   };
   return handleGoToHomePage;
 };
+
+export const useHandleGoToProfilePage = () => {
+  const navigate = useNavigate();
+  const handleGoToProfilePage = () => {
+    navigate("/profile");
+  };
+  return handleGoToProfilePage;
+};
