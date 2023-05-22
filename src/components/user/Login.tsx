@@ -8,6 +8,7 @@ import { RootState, store } from "../../store/store";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { postUsersThunk } from "../../store/thunksFunctions/postUsersThunk";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
 
 export const Login = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
@@ -22,6 +23,7 @@ export const Login = () => {
   const usersFromStore = useSelector(selectUser).users;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const handleGoToHomePage = useHandleGoToHomePage();
 
   const handleSignIn = () => {
     const checkUserExist = usersFromStore.find((user) => {
@@ -66,7 +68,7 @@ export const Login = () => {
 
   return (
     <>
-      <Button href="/" variant="outlined">
+      <Button onClick={handleGoToHomePage} href="/" variant="outlined">
         Back to start
       </Button>
       <form>

@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import { AllProductsInterface } from "../../interface/productsInterface";
 import { defaultState } from "../../interface/singleProductInterface";
 import { Button, Fade } from "@mui/material";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();
   const [singleProduct, setSingleProduct] =
     useState<AllProductsInterface>(defaultState);
   const url = `https://api.escuelajs.co/api/v1/products/${productId}`;
+  const handleGoToHomePage = useHandleGoToHomePage();
 
   useEffect(() => {
     const waitProduct = async () => {
@@ -24,7 +26,7 @@ export const SingleProduct = () => {
 
   return (
     <>
-      <Button href="/" variant="outlined">
+      <Button onClick={handleGoToHomePage} variant="outlined">
         Back to homepage
       </Button>
       <div style={{ color: "white" }}>

@@ -10,8 +10,10 @@ import {
   handleSortByPriceAscending,
   handleSortByPriceDescending,
 } from "./sortingFunctions";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
 
 export const AllProducts = () => {
+  const handleGoToHomePage = useHandleGoToHomePage();
   const selectProductState = (state: RootState) => state.product;
   const selectProduct = createSelector(
     selectProductState,
@@ -46,7 +48,7 @@ export const AllProducts = () => {
         >
           Sort by highest price
         </Button>
-        <Button href="/" variant="outlined">
+        <Button onClick={handleGoToHomePage} variant="outlined">
           Back to homepage
         </Button>
       </Box>

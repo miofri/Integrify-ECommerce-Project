@@ -17,11 +17,13 @@ import {
 import { cartSlice } from "../../store/cartSlice";
 import { CartModal } from "../cart/cartModal";
 import { AllProductsInterface } from "../../interface/productsInterface";
+import { useHandleGoToHomePage } from "../../utils/buttonNavigateHome";
 
 export const CategoryPages = () => {
   const [currentItems, setCurrentItems] = useState([]);
   const { categoryId } = useParams<{ categoryId: string }>();
   const url = `https://api.escuelajs.co/api/v1/products/?categoryId=${categoryId}`;
+  const handleGoToHomePage = useHandleGoToHomePage();
 
   useEffect(() => {
     const getCurrentItems = async () => {
@@ -41,7 +43,7 @@ export const CategoryPages = () => {
   return (
     <>
       <CartModal />
-      <Button href="/" variant="outlined">
+      <Button onClick={handleGoToHomePage} variant="outlined">
         Back to start
       </Button>
       <Container sx={{ maxWidth: "md" }}>

@@ -26,7 +26,6 @@ export const LoggedInUserSlice = createSlice({
       state.role = role;
       state.avatar = avatar;
       state.loggedIn = loggedIn;
-      console.log("loggeduser", state.email);
     },
   },
 });
