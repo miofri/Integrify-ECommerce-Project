@@ -1,4 +1,4 @@
-import { CartInterface } from "./cartInterface";
+import { CartInterface } from "./CartInterface";
 
 export interface UserCredentials {
   id: number;

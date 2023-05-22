@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { ProductState } from "../interface/productsInterface";
+import { ProductState } from "../interface/ProductsInterface";
 import { waitProductsThunk } from "./thunksFunctions/waitProductsThunk";
 
 let productsInitialValue: ProductState = {

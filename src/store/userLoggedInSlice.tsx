@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserCredentials, UserLoggedIn } from "../interface/userInfoInterface";
+import { UserCredentials, UserLoggedIn } from "../interface/UserInfoInterface";
 import { store } from "./store";
 
 const userInitialState: UserLoggedIn = {

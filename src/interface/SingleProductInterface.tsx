@@ -17,6 +17,10 @@ export interface Category {
   updatedAt: Date;
 }
 
+export interface CategoryArray {
+  categories: Category[];
+}
+
 export const defaultState = {
   id: 10,
   title: "Generic Granite Hat",

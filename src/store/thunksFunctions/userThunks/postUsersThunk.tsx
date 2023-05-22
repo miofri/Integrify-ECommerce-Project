@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { RegisterUser } from "../../interface/userInfoInterface";
+import { RegisterUser } from "../../../interface/UserInfoInterface";
 
 export const postUsersThunk = createAsyncThunk(
   "users/waitUsers",

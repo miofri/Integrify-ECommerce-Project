@@ -1,4 +1,4 @@
-import { AllProductsInterface } from "../../interface/productsInterface";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
 
 export const handleSortByName = (
   products: AllProductsInterface[],

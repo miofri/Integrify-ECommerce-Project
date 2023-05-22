@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { Users } from "../interface/userInfoInterface";
-import { waitUsersThunk } from "./thunksFunctions/waitUsersThunk";
+import { Users } from "../interface/UserInfoInterface";
+import { waitUsersThunk } from "./thunksFunctions/userThunks/waitUsersThunk";
 
 let usersInitialValue: Users = { users: [] };
 

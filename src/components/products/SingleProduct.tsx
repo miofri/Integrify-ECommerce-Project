@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AllProductsInterface } from "../../interface/productsInterface";
-import { defaultState } from "../../interface/singleProductInterface";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { defaultState } from "../../interface/SingleProductInterface";
 import { Button, Fade } from "@mui/material";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 

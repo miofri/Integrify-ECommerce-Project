@@ -1,4 +1,4 @@
-import { AllProductsInterface } from "./productsInterface";
+import { AllProductsInterface } from "./ProductsInterface";
 
 export interface CartInterface {
   product: AllProductsInterface;

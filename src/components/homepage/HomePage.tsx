@@ -8,28 +8,32 @@ import { store, RootState } from "../../store/store";
 import { ContainerStyle } from "../../theme/commonThemes";
 import { ImageListComponent } from "./ImageListComponent";
 import { categorySlice } from "../../store/categorySlice";
-import { Users } from "../../interface/userInfoInterface";
+import { Users } from "../../interface/UserInfoInterface";
 import { LoggedInUser } from "../user/LoggedInUser";
 import { useHandleGoToProfilePage } from "../../utils/buttonNavigate";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { waitCategoryThunk } from "../../store/thunksFunctions/categoriesThunk";
+import {
+  Category,
+  CategoryArray,
+} from "../../interface/SingleProductInterface";
 
 export const HomePage = () => {
-  const [localCategory, setLocalCategory] = useState<string[]>([]);
+  const [localCategory, setLocalCategory] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+
   const loggedInValue = useSelector(
     (state: RootState) => state.loggedInUser.loggedIn
   );
-  const categoryValue = useSelector((state: RootState) => state.category.value);
+  const categoryValue = useSelector(
+    (state: RootState) => state.category.categories
+  );
   const handleGoToProfilePage = useHandleGoToProfilePage();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const getCategories = async () => {
-      const response = await axios.get(
-        `https://api.escuelajs.co/api/v1/categories`
-      );
-      store.dispatch(categorySlice.actions.setCategory(response.data));
-    };
-    getCategories();
+    dispatch(waitCategoryThunk());
   }, []);
 
   useEffect(() => {
@@ -40,12 +44,10 @@ export const HomePage = () => {
   }, [categoryValue, loading]);
 
   const handleLogOut = () => {
-    console.log("clicled");
     store.dispatch(LoggedInUserSlice.actions.setInitialValue());
   };
 
   if (loading === false) {
-    console.log(categoryValue);
     return (
       <ContainerStyle>
         <Box>

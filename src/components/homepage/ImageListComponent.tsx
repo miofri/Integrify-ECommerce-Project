@@ -6,11 +6,12 @@ import {
 } from "@mui/material";
 import { mainTheme } from "../../theme/commonThemes";
 import { Link } from "react-router-dom";
+import { Category } from "../../interface/SingleProductInterface";
 
 export const ImageListComponent = ({
   localCategory,
 }: {
-  localCategory: string[];
+  localCategory: Category[];
 }) => {
   return (
     <ImageList sx={{ width: "100%", textAlign: "center" }}>

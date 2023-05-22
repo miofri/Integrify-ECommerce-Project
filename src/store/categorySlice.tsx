@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArrayInitialState } from "../interface/storeState";
+import { CategoryArray } from "../interface/SingleProductInterface";
 
-let categoryInitialValue: ArrayInitialState = { value: [] };
+let categoryInitialValue: CategoryArray = { categories: [] };
 
 export const categorySlice = createSlice({
   name: "category",
   initialState: categoryInitialValue,
   reducers: {
     setCategory: (state, action) => {
-      state.value = action.payload;
+      state.categories = action.payload;
     },
   },
 });

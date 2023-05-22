@@ -4,7 +4,7 @@ import { RootState, store } from "../../store/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { cartSlice } from "../../store/cartSlice";
-import { AllProductsInterface } from "../../interface/productsInterface";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { AllProducts } from "../products/AllProducts";
 
 //Copy pasted style from MUI just to make sure modal is working

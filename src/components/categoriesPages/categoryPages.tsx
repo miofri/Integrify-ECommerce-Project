@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { cartSlice } from "../../store/cartSlice";
 import { CartModal } from "../cart/cartModal";
-import { AllProductsInterface } from "../../interface/productsInterface";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 
 export const CategoryPages = () => {

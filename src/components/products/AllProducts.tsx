@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { RootState, store } from "../../store/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { AllProductsInterface } from "../../interface/productsInterface";
-import { Box, Button } from "@mui/material";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Box, Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
   handleSortByName,
@@ -11,8 +11,12 @@ import {
   handleSortByPriceDescending,
 } from "./sortingFunctions";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
+import axios from "axios";
 
 export const AllProducts = () => {
+  const [filterName, setFilterName] = useState("");
+  const [toggle, setToggle] = useState(true);
+
   const handleGoToHomePage = useHandleGoToHomePage();
   const selectProductState = (state: RootState) => state.product;
   const selectProduct = createSelector(
@@ -27,6 +31,21 @@ export const AllProducts = () => {
     setProducts(productFromStore);
   }, [productFromStore]);
 
+  useEffect(() => {
+    const getFiltered = async () => {
+      const response = await axios.get(
+        `https://api.escuelajs.co/api/v1/products/?title=${filterName}`
+      );
+      setProducts(response.data);
+    };
+    getFiltered();
+  }, [toggle]);
+
+  const handleNameFilter = () => {
+    if (filterName !== "") {
+      setToggle(!toggle);
+    }
+  };
   return (
     <>
       <Box>
@@ -50,6 +69,16 @@ export const AllProducts = () => {
         </Button>
         <Button onClick={handleGoToHomePage} variant="outlined">
           Back to homepage
+        </Button>
+      </Box>
+      <Box>
+        <TextField
+          label="Find item"
+          defaultValue=""
+          onChange={(e) => setFilterName(e.target.value)}
+        />
+        <Button variant="outlined" onClick={() => handleNameFilter()}>
+          Filter by name
         </Button>
       </Box>
       <div>
