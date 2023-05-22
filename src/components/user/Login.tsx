@@ -5,17 +5,25 @@ import { RootState, store } from "../../store/store";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../store/hooks";
+import { postUsersThunk } from "../../store/thunksFunctions/postUsersThunk";
+import { redirect } from "react-router-dom";
 
 export const Login = () => {
-  const [submittedEmail, setsubmittedEmail] = useState("");
-  const [submittedPassword, setsubmittedPassword] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
+  const [submittedPassword, setSubmittedPassword] = useState("");
+  const [registerName, setRegisterName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerAvatar, setRegisterAvatar] = useState("");
+
   const selectUserState = (state: RootState) => state.users;
   const selectUser = createSelector(selectUserState, (user) => user);
-  const usersFromStore = useSelector(selectUser);
-  console.log("users:", usersFromStore);
+  const usersFromStore = useSelector(selectUser).users;
+  const dispatch = useAppDispatch();
 
-  const handleSignIn = (e: React.FormEvent<HTMLButtonElement>) => {
-    const checkUserExist = usersFromStore.users.find((user) => {
+  const handleSignIn = () => {
+    const checkUserExist = usersFromStore.find((user) => {
       return (
         user.email === submittedEmail && user.password === submittedPassword
       );
@@ -31,34 +39,85 @@ export const Login = () => {
         loggedIn: true,
       };
       store.dispatch(LoggedInUserSlice.actions.setLoggedUser(submittedUser));
-      console.log("logged in");
+      window.alert("Sucessfully logged in! Redirecting...");
+      window.location.href = "/";
     } else {
-      window.alert("user does not exist");
+      window.alert("Incorrect email or password");
     }
   };
+
+  const handleRegistration = () => {
+    const checkUserExist = usersFromStore.find((user) => {
+      return user.email === registerEmail;
+    });
+
+    if (!checkUserExist) {
+      const newUser = {
+        name: registerName,
+        avatar: registerAvatar,
+        email: registerEmail,
+        password: registerPassword,
+      };
+      dispatch(postUsersThunk(newUser));
+    } else {
+      window.alert("user already exists");
+    }
+  };
+
   return (
-    <form>
-      <TextField
-        required
-        label="Email address"
-        defaultValue=""
-        onChange={(e) => setsubmittedEmail(e.target.value)}
-      />
-      <TextField
-        required
-        label="Password"
-        defaultValue=""
-        type="password"
-        onChange={(e) => setsubmittedPassword(e.target.value)}
-      />
-      <Button onClick={(e) => handleSignIn(e)} variant="outlined">
-        Submit
-      </Button>
-      <Button variant="outlined">Register</Button>
+    <>
       <Button href="/" variant="outlined">
         Back to start
       </Button>
-    </form>
+      <form>
+        <TextField
+          required
+          label="Email address"
+          defaultValue=""
+          onChange={(e) => setSubmittedEmail(e.target.value)}
+        />
+        <TextField
+          required
+          label="Password"
+          defaultValue=""
+          type="password"
+          onChange={(e) => setSubmittedPassword(e.target.value)}
+        />
+        <Button onClick={(e) => handleSignIn()} variant="outlined">
+          Submit
+        </Button>
+
+        <h2>New user? Register below</h2>
+        <TextField
+          required
+          label="Name"
+          defaultValue=""
+          onChange={(e) => setRegisterName(e.target.value)}
+        />
+        <TextField
+          required
+          label="Link to avatar"
+          defaultValue=""
+          onChange={(e) => setRegisterAvatar(e.target.value)}
+        />
+        <TextField
+          required
+          label="Email address"
+          defaultValue=""
+          onChange={(e) => setRegisterEmail(e.target.value)}
+        />
+        <TextField
+          required
+          label="Password"
+          defaultValue=""
+          type="password"
+          onChange={(e) => setRegisterPassword(e.target.value)}
+        />
+        <Button onClick={() => handleRegistration()} variant="outlined">
+          Register
+        </Button>
+      </form>
+    </>
   );
 };
 

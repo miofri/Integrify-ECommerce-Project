@@ -5,6 +5,11 @@ import { useSelector } from "react-redux";
 import { AllProductsInterface } from "../../interface/productsInterface";
 import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import {
+  handleSortByName,
+  handleSortByPriceAscending,
+  handleSortByPriceDescending,
+} from "./sortingFunctions";
 
 export const AllProducts = () => {
   const selectProductState = (state: RootState) => state.product;
@@ -20,38 +25,29 @@ export const AllProducts = () => {
     setProducts(productFromStore);
   }, [productFromStore]);
 
-  const handleSortByName = () => {
-    const sorted = [...products].sort((a, b) => a.title.localeCompare(b.title));
-    setProducts(sorted);
-  };
-
-  const handleSortByPriceAscending = () => {
-    const sorted = [...products].sort((a, b) => a.price - b.price);
-    setProducts(sorted);
-  };
-
-  const handleSortByPriceDescending = () => {
-    const sorted = [...products].sort((a, b) => b.price - a.price);
-    setProducts(sorted);
-  };
-
   return (
     <>
       <Box>
-        <Button onClick={() => handleSortByName()} variant="contained">
+        <Button
+          onClick={() => handleSortByName(products, setProducts)}
+          variant="contained"
+        >
           Sort by Name
         </Button>
         <Button
-          onClick={() => handleSortByPriceAscending()}
+          onClick={() => handleSortByPriceAscending(products, setProducts)}
           variant="contained"
         >
           Sort by lowest price
         </Button>
         <Button
-          onClick={() => handleSortByPriceDescending()}
+          onClick={() => handleSortByPriceDescending(products, setProducts)}
           variant="contained"
         >
           Sort by highest price
+        </Button>
+        <Button href="/" variant="outlined">
+          Back to homepage
         </Button>
       </Box>
       <div>

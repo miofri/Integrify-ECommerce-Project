@@ -18,3 +18,10 @@ export interface Users {
 export interface UserLoggedIn extends UserCredentials {
   loggedIn: boolean;
 }
+
+export interface RegisterUser {
+  email: string;
+  password: string;
+  name: string;
+  avatar: string;
+}

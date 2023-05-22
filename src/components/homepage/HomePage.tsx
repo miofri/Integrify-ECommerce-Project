@@ -8,11 +8,17 @@ import { store, RootState } from "../../store/store";
 import { ContainerStyle } from "../../theme/commonThemes";
 import { ImageListComponent } from "./ImageListComponent";
 import { categorySlice } from "../../store/categorySlice";
+import { Users } from "../../interface/userInfoInterface";
 
 export const HomePage = () => {
   const [localCategory, setLocalCategory] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const loggedInValue = useSelector(
+    (state: RootState) => state.loggedInUser.loggedIn
+  );
   const categoryValue = useSelector((state: RootState) => state.category.value);
+
+  console.log(loggedInValue);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -37,9 +43,14 @@ export const HomePage = () => {
     return (
       <ContainerStyle>
         <Box>
-          <Button href="/login" variant="outlined" type="submit">
-            Sign in <LoginIcon />
-          </Button>
+          {loggedInValue ? (
+            <></>
+          ) : (
+            <Button href="/login" variant="outlined" type="submit">
+              Sign in <LoginIcon />
+            </Button>
+          )}
+
           <ImageListComponent localCategory={localCategory} />
         </Box>
       </ContainerStyle>

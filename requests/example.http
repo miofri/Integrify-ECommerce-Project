@@ -1,0 +1,6 @@
+POST https://api.escuelajs.co/api/v1/users/is-available HTTP/1.1
+content-type: application/json
+
+{
+	"email": "asdss@emawil.com"
+}

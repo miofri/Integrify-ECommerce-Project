@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AllProductsInterface } from "../../interface/productsInterface";
 import { defaultState } from "../../interface/singleProductInterface";
-import { Fade } from "@mui/material";
+import { Button, Fade } from "@mui/material";
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -23,9 +23,14 @@ export const SingleProduct = () => {
   console.log(singleProduct);
 
   return (
-    <div style={{ color: "white" }}>
-      {singleProduct.title} {singleProduct.price}e <br />
-      {singleProduct.description} <br /> {singleProduct.category.name}
-    </div>
+    <>
+      <Button href="/" variant="outlined">
+        Back to homepage
+      </Button>
+      <div style={{ color: "white" }}>
+        {singleProduct.title} {singleProduct.price}e <br />
+        {singleProduct.description} <br /> {singleProduct.category.name}
+      </div>
+    </>
   );
 };

@@ -6,7 +6,7 @@ import { ProductState } from "../interface/productsInterface";
 import { cartSlice } from "./cartSlice";
 import { CartState } from "../interface/cartInterface";
 import { usersSlice } from "./usersSlice";
-import { Users } from "../interface/userInfoInterface";
+import { UserLoggedIn, Users } from "../interface/userInfoInterface";
 import { LoggedInUserSlice } from "./userLoggedInSlice";
 
 export const store = configureStore({
@@ -25,4 +25,5 @@ export type RootState = {
   product: ProductState;
   cart: CartState;
   users: Users;
+  loggedInUser: UserLoggedIn;
 };
