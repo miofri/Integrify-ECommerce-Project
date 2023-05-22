@@ -1,13 +1,13 @@
 import { Button, TextField } from "@mui/material";
-import { GoogleLogin } from "@react-oauth/google";
-import React, { useState } from "react";
-import { RootState, store } from "../../store/store";
-import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { RootState, store } from "../../store/store";
+import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { postUsersThunk } from "../../store/thunksFunctions/postUsersThunk";
-import { redirect } from "react-router-dom";
 
 export const Login = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
@@ -21,6 +21,7 @@ export const Login = () => {
   const selectUser = createSelector(selectUserState, (user) => user);
   const usersFromStore = useSelector(selectUser).users;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
     const checkUserExist = usersFromStore.find((user) => {
@@ -39,8 +40,7 @@ export const Login = () => {
         loggedIn: true,
       };
       store.dispatch(LoggedInUserSlice.actions.setLoggedUser(submittedUser));
-      window.alert("Sucessfully logged in! Redirecting...");
-      window.location.href = "/";
+      navigate("/");
     } else {
       window.alert("Incorrect email or password");
     }

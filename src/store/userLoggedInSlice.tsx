@@ -17,14 +17,16 @@ export const LoggedInUserSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     setLoggedUser: (state, action) => {
-      const { id, email, password, name, role, avatar } = action.payload;
+      const { id, email, password, name, role, avatar, loggedIn } =
+        action.payload;
       state.id = id;
       state.email = email;
       state.password = password;
       state.name = name;
       state.role = role;
       state.avatar = avatar;
-      state.loggedIn = true;
+      state.loggedIn = loggedIn;
+      console.log("loggeduser", state.email);
     },
   },
 });
