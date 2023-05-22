@@ -1,33 +1,30 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Button, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import axios from "axios";
+import { useEffect } from "react";
 
 import { mainTheme } from "./theme/commonThemes";
 import { HomePage } from "./components/homepage/HomePage";
 import { CategoryPages } from "./components/categoriesPages/categoryPages";
 import { AllProducts } from "./components/products/AllProducts";
 import { SingleProduct } from "./components/products/SingleProduct";
-import axios from "axios";
-import { useEffect } from "react";
-import { productSlice } from "./store/productSlice";
 import { store } from "./store/store";
 import { Login } from "./components/user/Login";
-import { userCartSlice } from "./store/userCartSlice";
+import { usersSlice } from "./store/usersSlice";
+import { waitProductsThunk } from "./store/thunksFunctions/waitProductsThunk";
+import { useAppDispatch } from "./store/hooks";
 
 const App = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    const waitProducts = async () => {
-      const response = await axios.get(
-        "https://api.escuelajs.co/api/v1/products"
-      );
-      store.dispatch(productSlice.actions.setProduct(response.data));
-    };
+    dispatch(waitProductsThunk());
 
     const waitUsers = async () => {
       const response = await axios.get("https://api.escuelajs.co/api/v1/users");
-      store.dispatch(userCartSlice.actions.setUser(response.data));
+      store.dispatch(usersSlice.actions.setUser(response.data));
     };
-    waitProducts();
     waitUsers();
   }, []);
 

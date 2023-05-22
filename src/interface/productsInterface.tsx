@@ -19,4 +19,6 @@ export interface Category {
 
 export interface ProductState {
   products: AllProductsInterface[];
+  status?: string;
+  error?: string;
 }

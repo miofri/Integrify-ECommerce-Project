@@ -9,11 +9,12 @@ export interface UserCredentials {
   avatar: string;
 }
 
-export interface UserCart {
-  user: UserCredentials;
-  cart?: CartInterface[];
+export interface Users {
+  users: UserCredentials[];
+  status?: string;
+  error?: string;
 }
 
-export interface UserCredentialsAndCart {
-  users: UserCart[];
+export interface UserLoggedIn extends UserCredentials {
+  loggedIn: boolean;
 }

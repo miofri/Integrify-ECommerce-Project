@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserCredentials } from "../interface/userInfoInterface";
+import { UserCredentials, UserLoggedIn } from "../interface/userInfoInterface";
 import { store } from "./store";
 
-const userInitialState: UserCredentials = {
+const userInitialState: UserLoggedIn = {
   id: 0,
   email: "",
   password: "",
   name: "",
   role: "",
   avatar: "",
+  loggedIn: false,
 };
 
 export const LoggedInUserSlice = createSlice({
@@ -16,15 +17,14 @@ export const LoggedInUserSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     setLoggedUser: (state, action) => {
-      const { email, password } = action.payload;
-      // state.id = id;
+      const { id, email, password, name, role, avatar } = action.payload;
+      state.id = id;
       state.email = email;
       state.password = password;
-      console.log(state);
-
-      // state.name = name;
-      // state.role = role;
-      // state.avatar = avatar;
+      state.name = name;
+      state.role = role;
+      state.avatar = avatar;
+      state.loggedIn = true;
     },
   },
 });
