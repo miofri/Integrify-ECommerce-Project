@@ -20,7 +20,6 @@ export const store = configureStore({
   },
 });
 
-//Maybe need to redefine the type for these?
 export type RootState = {
   category: CategoryArray;
   product: ProductState;

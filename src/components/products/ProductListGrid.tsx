@@ -23,7 +23,7 @@ export const ProductListGrid = ({ products }: Product) => {
   return (
     <Grid container spacing={2}>
       {products.map((data: any) => (
-        <Grid item xs={4}>
+        <Grid key={data.id} item xs={4}>
           <Card sx={{ maxWidth: "sm" }}>
             <CardMedia
               component="img"
