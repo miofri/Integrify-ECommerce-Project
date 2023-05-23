@@ -107,9 +107,12 @@ export const LoginPage = () => {
             flexDirection: "column",
             gap: "1rem",
             alignItems: "center",
+            mt: "2rem",
           }}
         >
-          <h2>New user? Register below</h2>
+          <Typography component="div" variant="h5">
+            New user? Register below
+          </Typography>
           <TextField
             required
             label="Name"

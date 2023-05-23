@@ -2,7 +2,6 @@ import {
   AppBar,
   Box,
   Button,
-  Container,
   IconButton,
   Menu,
   MenuItem,
@@ -23,7 +22,6 @@ import {
   useHandleGoToHomePage,
   useHandleGoToProfilePage,
 } from "../../utils/buttonNavigate";
-import { useNavigate } from "react-router-dom";
 import { CartModal } from "../cart/cartModal";
 
 export const HeaderBar = () => {
@@ -56,7 +54,6 @@ export const HeaderBar = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
               onClick={handleClick}
             >
               <MenuIcon />
@@ -65,11 +62,9 @@ export const HeaderBar = () => {
           <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
             <MenuItem onClick={handleGoToHomePage}>Home</MenuItem>
             <MenuItem onClick={handleAllProductButton}>All products</MenuItem>
-            <MenuItem>
-              <CartModal />
-            </MenuItem>
           </Menu>
-          <Box sx={{ flexGrow: 2 }}>
+          <CartModal />
+          <Box sx={{ flexGrow: 2, ml: "2rem" }}>
             <Tooltip title="Back to home page">
               <Typography
                 variant="h3"

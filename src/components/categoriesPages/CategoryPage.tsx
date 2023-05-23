@@ -16,7 +16,7 @@ export const CategoryPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(ItemsInCategoryThunk(setCurrentItems, currentItems, url));
+    dispatch(ItemsInCategoryThunk({ setCurrentItems, currentItems, url }));
   }, [categoryId]);
 
   return (

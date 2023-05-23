@@ -49,7 +49,6 @@ export const Profile = () => {
       updateUser.avatar = newAvatar;
     }
     if (Object.keys(updateUser).length > 0) {
-      console.log("updating");
       dispatch(putUsersThunk(updateUser));
     }
   };
