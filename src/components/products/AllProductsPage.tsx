@@ -43,7 +43,14 @@ export const AllProductsPage = () => {
           </Typography>
         </Container>
         <Container>
-          <Box sx={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "1rem",
+              alignItems: "center",
+            }}
+          >
             <SortByNameOrPrice
               products={products}
               setProducts={setProducts}

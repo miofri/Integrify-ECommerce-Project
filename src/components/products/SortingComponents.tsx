@@ -1,4 +1,19 @@
-import { Button, Menu, MenuItem, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SortIcon from "@mui/icons-material/Sort";
+import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import FilterListOffOutlinedIcon from "@mui/icons-material/FilterListOffOutlined";
+
 import {
   handleSortByNameAscending,
   handleSortByNameDescending,
@@ -6,8 +21,6 @@ import {
   handleSortByPriceDescending,
 } from "./sortingFunctions";
 import { AllProductsInterface } from "../../interface/ProductsInterface";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 interface SortByNameOrPriceProps {
   products: AllProductsInterface[];
@@ -23,19 +36,7 @@ export const SortByNameOrPrice = ({
   setSortedProducts,
 }: SortByNameOrPriceProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [filterName, setFilterName] = useState("");
-  const [toggle, setToggle] = useState(true);
   const open = Boolean(anchorEl);
-
-  useEffect(() => {
-    const getFiltered = async () => {
-      const response = await axios.get(
-        `https://api.escuelajs.co/api/v1/products/?title=${filterName}`
-      );
-      setSortedProducts(response.data);
-    };
-    getFiltered();
-  }, [toggle]);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -43,16 +44,14 @@ export const SortByNameOrPrice = ({
   const handleAnchorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleNameFilter = () => {
-    if (filterName !== "") {
-      setToggle(!toggle);
-    }
-  };
+
   return (
     <>
-      <Button onClick={handleAnchorClick} variant="outlined">
-        Sort
-      </Button>
+      <IconButton onClick={handleAnchorClick}>
+        <Tooltip title="Sort">
+          <SortIcon />
+        </Tooltip>
+      </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         <MenuItem>
           <Typography
@@ -95,14 +94,6 @@ export const SortByNameOrPrice = ({
           </Typography>
         </MenuItem>
       </Menu>
-      <TextField
-        label="Find item"
-        defaultValue=""
-        onChange={(e) => setFilterName(e.target.value)}
-      />
-      <Button variant="outlined" onClick={() => handleNameFilter()}>
-        Go
-      </Button>
     </>
   );
 };
@@ -116,11 +107,29 @@ export const SortByPriceRange = ({
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [filterName, setFilterName] = useState("");
+  const [toggle, setToggle] = useState(true);
+
+  const handleNameFilter = () => {
+    if (filterName !== "") {
+      setToggle(!toggle);
+    }
+  };
   // for the anchor of menu
   const handleAnchorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    const getFiltered = async () => {
+      const response = await axios.get(
+        `https://api.escuelajs.co/api/v1/products/?title=${filterName}`
+      );
+      setSortedProducts(response.data);
+    };
+    getFiltered();
+  }, [toggle]);
 
   const noFilter = () => {
     setSortedProducts(products);
@@ -151,9 +160,11 @@ export const SortByPriceRange = ({
 
   return (
     <>
-      <Button onClick={handleAnchorClick} variant="outlined">
-        Price range
-      </Button>
+      <IconButton onClick={handleAnchorClick}>
+        <Tooltip title="Price range">
+          <AttachMoneyOutlinedIcon />
+        </Tooltip>
+      </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         <MenuItem onClick={() => noFilter()}>No filter</MenuItem>
         <MenuItem onClick={() => below99()}>0e-99e</MenuItem>
@@ -161,9 +172,22 @@ export const SortByPriceRange = ({
         <MenuItem onClick={() => above499()}>500e-999e</MenuItem>
         <MenuItem onClick={() => above999()}>{">"} 999e </MenuItem>
       </Menu>
-      <Button onClick={() => noFilter()} variant="outlined">
-        Clear filter
-      </Button>
+      <IconButton onClick={() => noFilter()}>
+        <Tooltip title="Clear filter">
+          <FilterListOffOutlinedIcon />
+        </Tooltip>
+      </IconButton>
+      <Box sx={{ display: "flex", gap: "1rem" }}>
+        <TextField
+          id="inputFilter"
+          label="Find item"
+          defaultValue=""
+          onChange={(e) => setFilterName(e.target.value)}
+        />
+        <Button variant="outlined" onClick={() => handleNameFilter()}>
+          Go
+        </Button>
+      </Box>
     </>
   );
 };
