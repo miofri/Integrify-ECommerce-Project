@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { RootState } from "../../store/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { Avatar, Box, Button, Container, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 import { RegisterUser, UpdateUser } from "../../interface/UserInfoInterface";
 import { useAppDispatch } from "../../store/hooks";
+import { RootState } from "../../store/store";
 import { putUsersThunk } from "../../store/thunksFunctions/userThunks/putUsersThunk";
 
 export const Profile = () => {

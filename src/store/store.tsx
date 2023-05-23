@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+
 import { categorySlice } from "./categorySlice";
-import { ArrayInitialState } from "../interface/StoreState";
 import { productSlice } from "./productSlice";
 import { ProductState } from "../interface/ProductsInterface";
 import { cartSlice } from "./cartSlice";

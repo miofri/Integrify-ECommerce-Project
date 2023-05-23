@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { CategoryArray } from "../interface/SingleProductInterface";
 
 let categoryInitialValue: CategoryArray = { categories: [] };

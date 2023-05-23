@@ -1,11 +1,11 @@
 import { Box, Button, Modal } from "@mui/material";
-import { useState } from "react";
-import { RootState, store } from "../../store/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { RootState, store } from "../../store/store";
+
 import { cartSlice } from "../../store/cartSlice";
 import { AllProductsInterface } from "../../interface/ProductsInterface";
-import { AllProducts } from "../products/AllProducts";
 
 //Copy pasted style from MUI just to make sure modal is working
 const style = {

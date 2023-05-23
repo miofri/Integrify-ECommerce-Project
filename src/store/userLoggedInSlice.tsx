@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { UserCredentials, UserLoggedIn } from "../interface/UserInfoInterface";
 import { store } from "./store";
 

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button, Fade } from "@mui/material";
+
 import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { defaultState } from "../../interface/SingleProductInterface";
-import { Button, Fade } from "@mui/material";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
 
 export const SingleProduct = () => {

@@ -1,22 +1,22 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { RootState, store } from "../../store/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { Box, Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
+
 import {
   handleSortByName,
   handleSortByPriceAscending,
   handleSortByPriceDescending,
 } from "./sortingFunctions";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
-import axios from "axios";
+import { RootState, store } from "../../store/store";
+import { AllProductsInterface } from "../../interface/ProductsInterface";
 
 export const AllProducts = () => {
   const [filterName, setFilterName] = useState("");
   const [toggle, setToggle] = useState(true);
-
   const handleGoToHomePage = useHandleGoToHomePage();
   const selectProductState = (state: RootState) => state.product;
   const selectProduct = createSelector(

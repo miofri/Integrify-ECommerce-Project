@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 
-import { RootState, store } from "../../store/store";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -14,6 +13,8 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+
+import { RootState, store } from "../../store/store";
 import { cartSlice } from "../../store/cartSlice";
 import { CartModal } from "../cart/cartModal";
 import { AllProductsInterface } from "../../interface/ProductsInterface";

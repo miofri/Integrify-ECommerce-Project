@@ -1,7 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import { Avatar, Box } from "@mui/material";
+
+import { RootState } from "../../store/store";
 
 export const LoggedInUser = () => {
   const selectUserState = (state: RootState) => state.loggedInUser;

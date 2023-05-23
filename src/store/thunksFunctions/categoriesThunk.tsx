@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 import { categorySlice } from "../categorySlice";
 import { store } from "../store";
 
