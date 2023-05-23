@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { Avatar, Box, Button, Container, TextField } from "@mui/material";
+import { Avatar, Box, Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
-import { RegisterUser, UpdateUser } from "../../interface/UserInfoInterface";
+import { UpdateUser } from "../../interface/UserInfoInterface";
 import { useAppDispatch } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import { putUsersThunk } from "../../store/thunksFunctions/userThunks/putUsersThunk";
-import { ContainerStyle } from "../../theme/commonThemes";
-import { HeaderBar } from "../header/headerAppBar";
+import { ContainerStyleSmall } from "../../theme/commonThemes";
+import { HeaderBar } from "../header/HeaderAppBar";
 
 export const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
@@ -58,7 +58,7 @@ export const Profile = () => {
     return (
       <>
         <HeaderBar />
-        <ContainerStyle>
+        <ContainerStyleSmall>
           <Box sx={{ color: "white" }}>
             <Button onClick={handleGoToHomePage} variant="outlined">
               Back to start
@@ -108,14 +108,14 @@ export const Profile = () => {
               Save
             </Button>
           </Box>
-        </ContainerStyle>
+        </ContainerStyleSmall>
       </>
     );
   } else {
     return (
       <>
         <HeaderBar />
-        <ContainerStyle sx={{ display: "flex", flexDirection: "column" }}>
+        <ContainerStyleSmall sx={{ display: "flex", flexDirection: "column" }}>
           <Box sx={{ color: "white" }}>
             <h2>User profile</h2>
             <p>Name: {user.name}</p>
@@ -130,7 +130,7 @@ export const Profile = () => {
               Back to home
             </Button>
           </Box>
-        </ContainerStyle>
+        </ContainerStyleSmall>
       </>
     );
   }

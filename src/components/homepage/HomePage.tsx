@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import LoginIcon from "@mui/icons-material/Login";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { store, RootState } from "../../store/store";
 import { ContainerStyle } from "../../theme/commonThemes";
 import { ImageListComponent } from "./ImageListComponent";
 
-import { LoggedInUser } from "../user/LoggedInUser";
 import { useHandleGoToProfilePage } from "../../utils/buttonNavigate";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { waitCategoryThunk } from "../../store/thunksFunctions/categoriesThunk";
 import { Category } from "../../interface/SingleProductInterface";
-import { HeaderBar } from "../header/headerAppBar";
+import { HeaderBar } from "../header/HeaderAppBar";
 
 export const HomePage = () => {
   const [localCategory, setLocalCategory] = useState<Category[]>([]);

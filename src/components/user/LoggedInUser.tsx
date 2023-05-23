@@ -19,7 +19,7 @@ export const LoggedInUser = () => {
       }}
     >
       <Avatar alt={user.name} src={user.avatar}></Avatar>
-      Welcome, {user.name}
+      {user.name}
     </Box>
   );
 };

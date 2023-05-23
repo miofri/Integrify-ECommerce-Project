@@ -6,15 +6,15 @@ import { useEffect } from "react";
 
 import { mainTheme } from "./theme/commonThemes";
 import { HomePage } from "./components/homepage/HomePage";
-import { CategoryPages } from "./components/categoriesPages/categoryPages";
-import { AllProducts } from "./components/products/AllProducts";
+import { CategoryPage } from "./components/categoriesPages/CategoryPage";
+import { AllProductsPage } from "./components/products/AllProductsPage";
 import { SingleProduct } from "./components/products/SingleProduct";
 import { store } from "./store/store";
-import { Login } from "./components/user/Login";
+import { LoginPage } from "./components/user/LoginPage";
 import { usersSlice } from "./store/usersSlice";
 import { waitProductsThunk } from "./store/thunksFunctions/waitProductsThunk";
 import { useAppDispatch } from "./store/hooks";
-import { Profile } from "./components/user/Profile";
+import { Profile } from "./components/user/ProfilePage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -35,10 +35,10 @@ const App = () => {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
-            <Route path="/all-products" element={<AllProducts />} />
-            <Route path="/categories/:categoryId" element={<CategoryPages />} />
+            <Route path="/all-products" element={<AllProductsPage />} />
+            <Route path="/categories/:categoryId" element={<CategoryPage />} />
             <Route path="/product/:productId" element={<SingleProduct />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>

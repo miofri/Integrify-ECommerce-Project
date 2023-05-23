@@ -8,11 +8,10 @@ import { RootState, store } from "../../store/store";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { postUsersThunk } from "../../store/thunksFunctions/userThunks/postUsersThunk";
-import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
-import { HeaderBar } from "../header/headerAppBar";
-import { ContainerStyle, ContainerStyleSmall } from "../../theme/commonThemes";
+import { HeaderBar } from "../header/HeaderAppBar";
+import { ContainerStyleSmall } from "../../theme/commonThemes";
 
-export const Login = () => {
+export const LoginPage = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [submittedPassword, setSubmittedPassword] = useState("");
   const [registerName, setRegisterName] = useState("");
@@ -25,7 +24,6 @@ export const Login = () => {
   const usersFromStore = useSelector(selectUser);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const handleGoToHomePage = useHandleGoToHomePage();
 
   const handleSignIn = () => {
     const checkUserExist = usersFromStore.users.find((user) => {
@@ -145,14 +143,3 @@ export const Login = () => {
     </>
   );
 };
-
-{
-  /* <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          console.log(credentialResponse);
-        }}
-        onError={() => {
-          console.log("Login Failed");
-        }}
-      /> */
-}

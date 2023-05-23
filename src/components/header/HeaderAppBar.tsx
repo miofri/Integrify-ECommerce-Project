@@ -64,6 +64,7 @@ export const HeaderBar = () => {
             </IconButton>
           </Tooltip>
           <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+            <MenuItem onClick={handleGoToHomePage}>Home</MenuItem>
             <MenuItem onClick={handleAllProductButton}>All products</MenuItem>
             <MenuItem>
               <CartModal />
