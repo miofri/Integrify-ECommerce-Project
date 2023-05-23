@@ -15,3 +15,19 @@ export const useHandleGoToProfilePage = () => {
   };
   return handleGoToProfilePage;
 };
+
+export const useHandleGoToAllProducts = () => {
+  const navigate = useNavigate();
+  const handleGoToProfilePage = () => {
+    navigate("/all-products");
+  };
+  return handleGoToProfilePage;
+};
+
+export const useHandleGoBackOnePage = () => {
+  const navigate = useNavigate();
+  const handleGoToProfilePage = () => {
+    navigate(-1);
+  };
+  return handleGoToProfilePage;
+};

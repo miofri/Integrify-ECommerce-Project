@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { postUsersThunk } from "../../store/thunksFunctions/userThunks/postUsersThunk";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
+import { HeaderBar } from "../header/headerAppBar";
+import { ContainerStyle, ContainerStyleSmall } from "../../theme/commonThemes";
 
 export const Login = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
@@ -19,14 +21,14 @@ export const Login = () => {
   const [registerAvatar, setRegisterAvatar] = useState("");
 
   const selectUserState = (state: RootState) => state.users;
-  const selectUser = createSelector(selectUserState, (user) => user);
-  const usersFromStore = useSelector(selectUser).users;
+  const selectUser = createSelector(selectUserState, (users) => users);
+  const usersFromStore = useSelector(selectUser);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleGoToHomePage = useHandleGoToHomePage();
 
   const handleSignIn = () => {
-    const checkUserExist = usersFromStore.find((user) => {
+    const checkUserExist = usersFromStore.users.find((user) => {
       return (
         user.email === submittedEmail && user.password === submittedPassword
       );
@@ -48,8 +50,8 @@ export const Login = () => {
     }
   };
 
-  const handleRegistration = () => {
-    const checkUserExist = usersFromStore.find((user) => {
+  const handleRegistration = async () => {
+    const checkUserExist = usersFromStore.users.find((user) => {
       return user.email === registerEmail;
     });
 
@@ -60,7 +62,8 @@ export const Login = () => {
         email: registerEmail,
         password: registerPassword,
       };
-      dispatch(postUsersThunk(newUser));
+      await dispatch(postUsersThunk(newUser));
+      navigate("/");
     } else {
       window.alert("user already exists");
     }
@@ -68,57 +71,77 @@ export const Login = () => {
 
   return (
     <>
-      <Button onClick={handleGoToHomePage} variant="outlined">
-        Back to start
-      </Button>
-      <form>
-        <TextField
-          required
-          label="Email address"
-          defaultValue=""
-          onChange={(e) => setSubmittedEmail(e.target.value)}
-        />
-        <TextField
-          required
-          label="Password"
-          defaultValue=""
-          type="password"
-          onChange={(e) => setSubmittedPassword(e.target.value)}
-        />
-        <Button onClick={(e) => handleSignIn()} variant="outlined">
-          Submit
-        </Button>
+      <HeaderBar />
+      <ContainerStyleSmall>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography component="div" variant="h2">
+            Sign in
+          </Typography>
+          <TextField
+            required
+            label="Email address"
+            defaultValue=""
+            onChange={(e) => setSubmittedEmail(e.target.value)}
+          />
+          <TextField
+            required
+            label="Password"
+            defaultValue=""
+            type="password"
+            onChange={(e) => setSubmittedPassword(e.target.value)}
+          />
+          <Button onClick={(e) => handleSignIn()} variant="outlined">
+            Submit
+          </Button>
+        </Box>
 
-        <h2>New user? Register below</h2>
-        <TextField
-          required
-          label="Name"
-          defaultValue=""
-          onChange={(e) => setRegisterName(e.target.value)}
-        />
-        <TextField
-          required
-          label="Link to avatar"
-          defaultValue=""
-          onChange={(e) => setRegisterAvatar(e.target.value)}
-        />
-        <TextField
-          required
-          label="Email address"
-          defaultValue=""
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <TextField
-          required
-          label="Password"
-          defaultValue=""
-          type="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <Button onClick={() => handleRegistration()} variant="outlined">
-          Register
-        </Button>
-      </form>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            alignItems: "center",
+          }}
+        >
+          <h2>New user? Register below</h2>
+          <TextField
+            required
+            label="Name"
+            defaultValue=""
+            onChange={(e) => setRegisterName(e.target.value)}
+          />
+          <TextField
+            required
+            label="Link to avatar"
+            defaultValue=""
+            onChange={(e) => setRegisterAvatar(e.target.value)}
+          />
+          <TextField
+            required
+            label="Email address"
+            defaultValue=""
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
+          <TextField
+            required
+            label="Password"
+            defaultValue=""
+            type="password"
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
+          <Button onClick={() => handleRegistration()} variant="outlined">
+            Register
+          </Button>
+        </Box>
+      </ContainerStyleSmall>
     </>
   );
 };

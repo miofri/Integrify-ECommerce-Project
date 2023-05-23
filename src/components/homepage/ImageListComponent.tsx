@@ -3,6 +3,7 @@ import {
   ImageListItem,
   ImageListItemBar,
   ListSubheader,
+  Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -15,31 +16,17 @@ export const ImageListComponent = ({
   localCategory: Category[];
 }) => {
   return (
-    <ImageList sx={{ width: "100%", textAlign: "center" }}>
-      <ImageListItem key="all-products" cols={2}>
-        <Link to={"/all-products"}>
-          <ListSubheader
-            component="div"
-            sx={{
-              backgroundColor: mainTheme.palette.divider,
-              color: mainTheme.palette.secondary.main,
-              textAlign: "center",
-            }}
-          >
-            Click to show all products
-          </ListSubheader>
-        </Link>
-      </ImageListItem>
-      <ImageListItem key="subheader" cols={2}>
+    <ImageList sx={{ width: "100%", textAlign: "center" }} cols={5}>
+      <ImageListItem key="subheader" cols={5}>
         <ListSubheader
           component="div"
           sx={{
-            backgroundColor: mainTheme.palette.divider,
-            color: mainTheme.palette.primary.main,
-            textAlign: "center",
+            color: "white",
           }}
         >
-          Categories
+          <Typography variant="h2" sx={{ padding: "1rem" }}>
+            Categories
+          </Typography>
         </ListSubheader>
       </ImageListItem>
       {localCategory.map((data: any) => (

@@ -19,6 +19,7 @@ import { cartSlice } from "../../store/cartSlice";
 import { CartModal } from "../cart/cartModal";
 import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
+import { HeaderBar } from "../header/headerAppBar";
 
 export const CategoryPages = () => {
   const [currentItems, setCurrentItems] = useState([]);
@@ -43,10 +44,7 @@ export const CategoryPages = () => {
 
   return (
     <>
-      <CartModal />
-      <Button onClick={handleGoToHomePage} variant="outlined">
-        Back to start
-      </Button>
+      <HeaderBar />
       <Container sx={{ maxWidth: "md" }}>
         <Grid container spacing={2}>
           {currentItems.map((data: any) => (

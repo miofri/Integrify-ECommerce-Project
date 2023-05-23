@@ -19,7 +19,6 @@ export const cartSlice = createSlice({
           product: action.payload,
           quantity: 1,
         };
-        console.log("NEWITEM", newItem);
         state.cartItems = state.cartItems.concat(newItem);
       }
     },

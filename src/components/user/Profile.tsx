@@ -9,6 +9,8 @@ import { RegisterUser, UpdateUser } from "../../interface/UserInfoInterface";
 import { useAppDispatch } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import { putUsersThunk } from "../../store/thunksFunctions/userThunks/putUsersThunk";
+import { ContainerStyle } from "../../theme/commonThemes";
+import { HeaderBar } from "../header/headerAppBar";
 
 export const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
@@ -54,74 +56,82 @@ export const Profile = () => {
 
   if (user.role === "admin") {
     return (
-      <Container>
-        <Box sx={{ color: "white" }}>
-          <Button onClick={handleGoToHomePage} variant="outlined">
-            Back to start
-          </Button>
-          <h2>User profile</h2>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <p>Avatar: </p>
-          <Avatar alt={user.name} src={user.avatar}></Avatar>
-          <p>Customer ID: {user.id}</p>
-        </Box>
-        <Box sx={{ color: "white" }}>
-          <h2>Edit user</h2>
-          <TextField
-            label="User ID"
-            type="number"
-            defaultValue=""
-            name="User ID"
-            onChange={(e) => setNewId(Number(e.target.value))}
-          />
-          <TextField
-            label="Name"
-            defaultValue=""
-            name="name"
-            onChange={(e) => setNewName(e.target.value)}
-          />
-          <TextField
-            label="Link to avatar"
-            defaultValue=""
-            name="avatar"
-            onChange={(e) => setNewAvatar(e.target.value)}
-          />
-          <TextField
-            label="Email address"
-            defaultValue=""
-            name="email"
-            onChange={(e) => setNewEmail(e.target.value)}
-          />
-          <TextField
-            label="Password"
-            defaultValue=""
-            type="password"
-            name="password"
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-          <Button onClick={() => handleChangeDetail()} variant="outlined">
-            Save
-          </Button>
-        </Box>
-      </Container>
+      <>
+        <HeaderBar />
+        <ContainerStyle>
+          <Box sx={{ color: "white" }}>
+            <Button onClick={handleGoToHomePage} variant="outlined">
+              Back to start
+            </Button>
+            <h2>User profile</h2>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+            <p>Avatar: </p>
+            <Avatar alt={user.name} src={user.avatar}></Avatar>
+            <p>Customer ID: {user.id}</p>
+          </Box>
+          <Box sx={{ color: "white" }}>
+            <h2>Edit user</h2>
+            <TextField
+              label="User ID"
+              type="number"
+              defaultValue=""
+              name="User ID"
+              onChange={(e) => setNewId(Number(e.target.value))}
+            />
+            <TextField
+              label="Name"
+              defaultValue=""
+              name="name"
+              onChange={(e) => setNewName(e.target.value)}
+            />
+            <TextField
+              label="Link to avatar"
+              defaultValue=""
+              name="avatar"
+              onChange={(e) => setNewAvatar(e.target.value)}
+            />
+            <TextField
+              label="Email address"
+              defaultValue=""
+              name="email"
+              onChange={(e) => setNewEmail(e.target.value)}
+            />
+            <TextField
+              label="Password"
+              defaultValue=""
+              type="password"
+              name="password"
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <Button onClick={() => handleChangeDetail()} variant="outlined">
+              Save
+            </Button>
+          </Box>
+        </ContainerStyle>
+      </>
     );
   } else {
     return (
-      <Container>
-        <Box sx={{ color: "white" }}>
-          <Button onClick={handleGoToHomePage} variant="outlined">
-            Back to start
-          </Button>
-          <h2>User profile</h2>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <p>
-            Avatar: <Avatar src={user.avatar}></Avatar>
-          </p>
-          <p>Customer ID: {user.id}</p>
-        </Box>
-      </Container>
+      <>
+        <HeaderBar />
+        <ContainerStyle sx={{ display: "flex", flexDirection: "column" }}>
+          <Box sx={{ color: "white" }}>
+            <h2>User profile</h2>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+            <p>
+              Avatar: <Avatar src={user.avatar}></Avatar>
+            </p>
+            <p>Customer ID: {user.id}</p>
+          </Box>
+          <Box sx={{ alignSelf: "flex-end" }}>
+            <Button onClick={handleGoToHomePage} variant="outlined">
+              Back to home
+            </Button>
+          </Box>
+        </ContainerStyle>
+      </>
     );
   }
 };

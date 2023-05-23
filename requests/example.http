@@ -1,6 +1,9 @@
-POST https://api.escuelajs.co/api/v1/users/is-available HTTP/1.1
+POST https://api.escuelajs.co/api/v1/users/ HTTP/1.1
 content-type: application/json
 
 {
-	"email": "asdss@emawil.com"
+	"email": "asdss@emawil.com",
+	"name": "test",
+	"avatar": "test.com",
+	"password": 1234
 }

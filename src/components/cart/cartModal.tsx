@@ -1,4 +1,4 @@
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button, Modal, Typography } from "@mui/material";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -49,38 +49,42 @@ export const CartModal = () => {
 
   return (
     <>
-      <Button onClick={handleOpen} variant="outlined">
+      <Typography onClick={handleOpen} component={"span"}>
         Cart
-      </Button>
+      </Typography>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          {cartFromStore.map((data) => (
-            <Box sx={{ marginTop: "10px" }}>
-              <div>
-                {data.product.title} {data.product.price}e
-              </div>
-              <div>{data.product.description}</div>
-              <Button onClick={() => handleCartItemDelete(data.product)}>
-                Delete Item
-              </Button>
-              <div>
-                <Button
-                  variant="outlined"
-                  onClick={() => handleAddItem(data.product)}
-                >
-                  +
+        {cartFromStore.length < 1 ? (
+          <Box sx={style}> Cart is empty</Box>
+        ) : (
+          <Box sx={style}>
+            {cartFromStore.map((data) => (
+              <Box sx={{ marginTop: "10px" }}>
+                <div>
+                  {data.product.title} {data.product.price}e
+                </div>
+                <div>{data.product.description}</div>
+                <Button onClick={() => handleCartItemDelete(data.product)}>
+                  Delete Item
                 </Button>
-                {data.quantity}
-                <Button
-                  variant="outlined"
-                  onClick={() => handleReduceQuantity(data.product)}
-                >
-                  -
-                </Button>
-              </div>
-            </Box>
-          ))}
-        </Box>
+                <div>
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleAddItem(data.product)}
+                  >
+                    +
+                  </Button>
+                  {data.quantity}
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleReduceQuantity(data.product)}
+                  >
+                    -
+                  </Button>
+                </div>
+              </Box>
+            ))}
+          </Box>
+        )}
       </Modal>
     </>
   );

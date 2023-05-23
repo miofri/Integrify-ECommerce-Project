@@ -29,9 +29,17 @@ export const mainTheme = createTheme(themeOptions);
 export const ContainerStyle = styled(Container)({
   color: mainTheme.palette.text.primary,
   backgroundColor: mainTheme.palette.background.default,
-  marginTop: "1rem",
+  marginTop: "2rem",
   borderRadius: "2rem",
   padding: "1rem",
-  width: "600px",
-  maxWidth: "600px",
+  maxWidth: "80%",
+});
+
+export const ContainerStyleSmall = styled(Container)({
+  color: mainTheme.palette.text.primary,
+  backgroundColor: mainTheme.palette.background.default,
+  marginTop: "2rem",
+  borderRadius: "2rem",
+  padding: "2rem",
+  width: "35rem",
 });

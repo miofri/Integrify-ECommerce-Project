@@ -1,10 +1,18 @@
 import { AllProductsInterface } from "../../interface/ProductsInterface";
 
-export const handleSortByName = (
+export const handleSortByNameAscending = (
   products: AllProductsInterface[],
   setProducts: React.Dispatch<React.SetStateAction<AllProductsInterface[]>>
 ) => {
   const sorted = [...products].sort((a, b) => a.title.localeCompare(b.title));
+  setProducts(sorted);
+};
+
+export const handleSortByNameDescending = (
+  products: AllProductsInterface[],
+  setProducts: React.Dispatch<React.SetStateAction<AllProductsInterface[]>>
+) => {
+  const sorted = [...products].sort((a, b) => b.title.localeCompare(a.title));
   setProducts(sorted);
 };
 
