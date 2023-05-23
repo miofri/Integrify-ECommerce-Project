@@ -6,20 +6,17 @@ import { Container, Grid } from "@mui/material";
 import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { CategoryGrid } from "./CategoryGrid";
+import { useAppDispatch } from "../../store/hooks";
+import { ItemsInCategoryThunk } from "../../store/thunksFunctions/ItemsInCategoryThunk";
 
 export const CategoryPage = () => {
   const [currentItems, setCurrentItems] = useState<AllProductsInterface[]>([]);
   const { categoryId } = useParams<{ categoryId: string }>();
   const url = `https://api.escuelajs.co/api/v1/products/?categoryId=${categoryId}`;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const getCurrentItems = async () => {
-      const response = await axios.get(url);
-      const finalData = response.data;
-      setCurrentItems(finalData);
-      console.log(currentItems);
-    };
-    getCurrentItems();
+    dispatch(ItemsInCategoryThunk(setCurrentItems, currentItems, url));
   }, [categoryId]);
 
   return (

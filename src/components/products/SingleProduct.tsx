@@ -11,11 +11,26 @@ import {
 } from "@mui/material";
 
 import { AllProductsInterface } from "../../interface/ProductsInterface";
-import { defaultState } from "../../interface/SingleProductInterface";
-
 import { useHandleGoBackOnePage } from "../../utils/buttonNavigate";
 import { ContainerStyleSmall } from "../../theme/commonThemes";
 import { HeaderBar } from "../header/HeaderAppBar";
+
+export const defaultState = {
+  id: 0,
+  title: "",
+  price: 789,
+  description: "",
+  images: ["", "", ""],
+  creationAt: new Date(),
+  updatedAt: new Date(),
+  category: {
+    id: 0,
+    name: "",
+    image: "",
+    creationAt: new Date(),
+    updatedAt: new Date(),
+  },
+};
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();

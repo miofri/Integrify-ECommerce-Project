@@ -23,7 +23,6 @@ export const HomePage = () => {
   const categoryValue = useSelector(
     (state: RootState) => state.category.categories
   );
-  const handleGoToProfilePage = useHandleGoToProfilePage();
   const dispatch = useAppDispatch();
 
   useEffect(() => {

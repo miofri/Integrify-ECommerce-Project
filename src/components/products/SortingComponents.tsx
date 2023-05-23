@@ -40,7 +40,6 @@ export const SortByNameOrPrice = ({
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // for the anchor of menu
   const handleAnchorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };

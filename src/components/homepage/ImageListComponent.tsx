@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { mainTheme } from "../../theme/commonThemes";
 import { Category } from "../../interface/SingleProductInterface";
 
 export const ImageListComponent = ({

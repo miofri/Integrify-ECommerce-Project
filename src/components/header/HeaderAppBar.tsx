@@ -29,7 +29,6 @@ import { CartModal } from "../cart/cartModal";
 export const HeaderBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const loggedInValue = useSelector(
     (state: RootState) => state.loggedInUser.loggedIn

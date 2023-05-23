@@ -15,18 +15,14 @@ import { usersSlice } from "./store/usersSlice";
 import { waitProductsThunk } from "./store/thunksFunctions/waitProductsThunk";
 import { useAppDispatch } from "./store/hooks";
 import { Profile } from "./components/user/ProfilePage";
+import { waitUsersThunk } from "./store/thunksFunctions/userThunks/waitUsersThunk";
 
 const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(waitProductsThunk());
-
-    const waitUsers = async () => {
-      const response = await axios.get("https://api.escuelajs.co/api/v1/users");
-      store.dispatch(usersSlice.actions.setUser(response.data));
-    };
-    waitUsers();
+    dispatch(waitUsersThunk());
   }, []);
 
   return (
