@@ -14,6 +14,8 @@ import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { useHandleGoBackOnePage } from "../../utils/buttonNavigate";
 import { ContainerStyleSmall } from "../../theme/commonThemes";
 import { HeaderBar } from "../header/HeaderAppBar";
+import { cartSlice } from "../../store/cartSlice";
+import { store } from "../../store/store";
 
 export const defaultState = {
   id: 0,
@@ -38,6 +40,10 @@ export const SingleProduct = () => {
     useState<AllProductsInterface>(defaultState);
   const url = `https://api.escuelajs.co/api/v1/products/${productId}`;
   const handleGoBackOnePage = useHandleGoBackOnePage();
+
+  const handleAddToCart = (data: AllProductsInterface) => {
+    store.dispatch(cartSlice.actions.addProduct(data));
+  };
 
   useEffect(() => {
     const waitProduct = async () => {
@@ -68,9 +74,17 @@ export const SingleProduct = () => {
             <p>{singleProduct.description} </p>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Chip variant="filled" label={singleProduct.category.name}></Chip>
-              <Button onClick={handleGoBackOnePage} variant="outlined">
-                Back
-              </Button>
+              <Box sx={{ display: "flex", gap: "1rem" }}>
+                <Button
+                  onClick={() => handleAddToCart(singleProduct)}
+                  variant="outlined"
+                >
+                  Add to cart
+                </Button>
+                <Button onClick={handleGoBackOnePage} variant="outlined">
+                  Back
+                </Button>
+              </Box>
             </Box>
           </div>
         </Box>
