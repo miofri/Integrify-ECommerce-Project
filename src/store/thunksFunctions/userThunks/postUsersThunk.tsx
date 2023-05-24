@@ -10,7 +10,6 @@ export const postUsersThunk = createAsyncThunk(
       "https://api.escuelajs.co/api/v1/users",
       newUser
     );
-    console.log(response.data);
     return response.data;
   }
 );

@@ -42,7 +42,7 @@ export const LoginPage = () => {
         loggedIn: true,
       };
       store.dispatch(LoggedInUserSlice.actions.setLoggedUser(submittedUser));
-      navigate("/");
+      navigate("/profile");
     } else {
       window.alert("Incorrect email or password");
     }
@@ -61,7 +61,7 @@ export const LoginPage = () => {
         password: registerPassword,
       };
       await dispatch(postUsersThunk(newUser));
-      navigate("/");
+      navigate("/profile");
     } else {
       window.alert("user already exists");
     }
