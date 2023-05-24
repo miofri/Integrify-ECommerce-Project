@@ -61,7 +61,7 @@ export const LoginPage = () => {
         password: registerPassword,
       };
       await dispatch(postUsersThunk(newUser));
-      navigate("/profile");
+      navigate("/");
     } else {
       window.alert("user already exists");
     }
