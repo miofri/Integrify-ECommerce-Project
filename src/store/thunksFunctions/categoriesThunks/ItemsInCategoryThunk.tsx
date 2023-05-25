@@ -8,7 +8,6 @@ export const ItemsInCategoryThunk = createAsyncThunk(
   "category/waitItemsInCategory",
   async ({
     setCurrentItems,
-    currentItems,
     url,
   }: {
     setCurrentItems: React.Dispatch<
@@ -20,6 +19,5 @@ export const ItemsInCategoryThunk = createAsyncThunk(
     const response = await axios.get(url);
     const finalData = response.data;
     setCurrentItems(finalData);
-    console.log(currentItems);
   }
 );

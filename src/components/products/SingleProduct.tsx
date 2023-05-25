@@ -9,6 +9,7 @@ import {
   ImageListItem,
   Typography,
 } from "@mui/material";
+import { v4 as uuid } from "uuid";
 
 import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { useHandleGoBackOnePage } from "../../utils/buttonNavigate";
@@ -63,11 +64,14 @@ export const SingleProduct = () => {
           <div style={{ color: "white" }}>
             <h2>{singleProduct.title}</h2>
             <ImageList sx={{ width: "100%" }} cols={3} rowHeight={"auto"}>
-              {singleProduct.images.map((img) => (
-                <ImageListItem>
-                  <img src={img} alt={singleProduct.title} />
-                </ImageListItem>
-              ))}
+              {singleProduct.images.map((img) => {
+                const key = `${uuid()}-${img}`;
+                return (
+                  <ImageListItem key={key}>
+                    <img src={img} alt={singleProduct.title} />
+                  </ImageListItem>
+                );
+              })}
             </ImageList>
             <Typography variant="subtitle2" component="div">
               {singleProduct.price}€

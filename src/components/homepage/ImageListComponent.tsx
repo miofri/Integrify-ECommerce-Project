@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 import { Category } from "../../interface/SingleProductInterface";
 
@@ -28,14 +29,17 @@ export const ImageListComponent = ({
           </Typography>
         </ListSubheader>
       </ImageListItem>
-      {localCategory.map((data: any) => (
-        <Link to={`/categories/${data.id}`}>
-          <ImageListItem key={data.id}>
-            <img src={data.image} alt={data.name} />
-            <ImageListItemBar title={data.name}></ImageListItemBar>
-          </ImageListItem>
-        </Link>
-      ))}
+      {localCategory.map((data: any) => {
+        const key = `${uuid()}-${data.id}`;
+        return (
+          <Link to={`/categories/${data.id}`} key={key}>
+            <ImageListItem>
+              <img src={data.image} alt={data.name} />
+              <ImageListItemBar title={data.name}></ImageListItemBar>
+            </ImageListItem>
+          </Link>
+        );
+      })}
     </ImageList>
   );
 };

@@ -23,7 +23,7 @@ export const CategoryGrid = ({ currentItems }: Product) => {
   return (
     <>
       {currentItems.map((data: AllProductsInterface) => (
-        <Grid item xs={4}>
+        <Grid key={data.id} item xs={4}>
           <Card sx={{ maxWidth: "sm" }}>
             <CardMedia
               component="img"

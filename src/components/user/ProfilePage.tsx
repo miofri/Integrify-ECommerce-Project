@@ -22,7 +22,8 @@ import {
   mainTheme,
 } from "../../theme/commonThemes";
 import { HeaderBar } from "../header/HeaderAppBar";
-import { UpdateProduct } from "../products/updateProduct/UpdateProduct";
+import { UpdateProduct } from "./adminFeatures/UpdateProduct";
+import { CreateProduct } from "./adminFeatures/CreateProduct";
 
 export const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
@@ -154,6 +155,17 @@ export const Profile = () => {
               }}
             >
               <UpdateProduct />
+            </Box>
+            <Box
+              sx={{
+                color: "white",
+                mt: "2rem",
+                backgroundColor: mainTheme.palette.background.paper,
+                padding: "2rem",
+                borderRadius: "2rem",
+              }}
+            >
+              <CreateProduct />
             </Box>
           </Container>
         </Box>

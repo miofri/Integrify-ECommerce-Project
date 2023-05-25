@@ -1,10 +1,5 @@
 import { Category } from "./SingleProductInterface";
 
-export interface ImagesObject {
-  img1?: string;
-  img2?: string;
-  img3?: string;
-}
 export interface ProductVals {
   id: number;
   title?: string;
@@ -15,6 +10,7 @@ export interface ProductVals {
   images?: string[];
 }
 export interface optionalId {
+  //This is for deleting ID from the object in thunk.
   id?: number;
   title: string;
   price: number;
@@ -24,8 +20,12 @@ export interface optionalId {
   updatedAt: Date;
   category: Category;
 }
-
 export interface updateImg {
   id?: number;
   newImg?: string;
+}
+export interface ImagesObject {
+  img1?: string;
+  img2?: string;
+  img3?: string;
 }
