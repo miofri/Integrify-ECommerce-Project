@@ -11,6 +11,7 @@ export const putUsersThunk = createAsyncThunk(
       updatedUser
     );
     console.log(response.data);
+
     return response.data;
   }
 );

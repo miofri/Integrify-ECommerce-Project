@@ -7,7 +7,7 @@ import { AllProductsInterface } from "../../interface/ProductsInterface";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { CategoryGrid } from "./CategoryGrid";
 import { useAppDispatch } from "../../store/hooks";
-import { ItemsInCategoryThunk } from "../../store/thunksFunctions/ItemsInCategoryThunk";
+import { ItemsInCategoryThunk } from "../../store/thunksFunctions/categoriesThunks/ItemsInCategoryThunk";
 
 export const CategoryPage = () => {
   const [currentItems, setCurrentItems] = useState<AllProductsInterface[]>([]);

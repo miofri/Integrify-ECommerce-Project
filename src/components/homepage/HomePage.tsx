@@ -9,7 +9,7 @@ import { ImageListComponent } from "./ImageListComponent";
 import { useHandleGoToProfilePage } from "../../utils/buttonNavigate";
 import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { waitCategoryThunk } from "../../store/thunksFunctions/categoriesThunk";
+import { waitCategoryThunk } from "../../store/thunksFunctions/categoriesThunks/categoriesThunk";
 import { Category } from "../../interface/SingleProductInterface";
 import { HeaderBar } from "../header/HeaderAppBar";
 

@@ -22,7 +22,7 @@ import {
   useHandleGoToHomePage,
   useHandleGoToProfilePage,
 } from "../../utils/buttonNavigate";
-import { CartModal } from "../cart/cartModal";
+import { CartModal } from "../cart/CartModal";
 
 export const HeaderBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

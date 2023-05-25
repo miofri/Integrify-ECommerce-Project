@@ -31,7 +31,7 @@ export const ContainerStyle = styled(Container)({
   backgroundColor: mainTheme.palette.background.default,
   marginTop: "2rem",
   borderRadius: "2rem",
-  padding: "1rem",
+  padding: 8,
   maxWidth: "80%",
 });
 

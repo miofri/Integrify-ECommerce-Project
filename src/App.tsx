@@ -12,7 +12,7 @@ import { SingleProduct } from "./components/products/SingleProduct";
 import { store } from "./store/store";
 import { LoginPage } from "./components/user/LoginPage";
 import { usersSlice } from "./store/usersSlice";
-import { waitProductsThunk } from "./store/thunksFunctions/waitProductsThunk";
+import { waitProductsThunk } from "./store/thunksFunctions/productsThunks/waitProductsThunk";
 import { useAppDispatch } from "./store/hooks";
 import { Profile } from "./components/user/ProfilePage";
 import { waitUsersThunk } from "./store/thunksFunctions/userThunks/waitUsersThunk";
@@ -20,9 +20,17 @@ import { waitUsersThunk } from "./store/thunksFunctions/userThunks/waitUsersThun
 const App = () => {
   const dispatch = useAppDispatch();
 
+  /* using setInterval because sometimes products are up to date */
   useEffect(() => {
     dispatch(waitProductsThunk());
     dispatch(waitUsersThunk());
+
+    const interval = setInterval(() => {
+      dispatch(waitProductsThunk());
+      dispatch(waitUsersThunk());
+      console.log("dispatched!2");
+    }, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

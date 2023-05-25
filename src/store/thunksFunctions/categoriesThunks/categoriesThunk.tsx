@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { categorySlice } from "../categorySlice";
-import { store } from "../store";
+import { categorySlice } from "../../categorySlice";
+import { store } from "../../store";
 
 export const waitCategoryThunk = createAsyncThunk(
   "category/waitCategory",
