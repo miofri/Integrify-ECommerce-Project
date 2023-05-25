@@ -8,8 +8,6 @@ export const uploadNewProductImageThunk = createAsyncThunk(
   async (dispatchData: { img: string[]; id: number }) => {
     const url = `https://api.escuelajs.co/api/v1/products/${dispatchData.id}`;
     const response = await axios.put(url, { images: dispatchData.img });
-    console.log(response.data);
-
     return response.data;
   }
 );
