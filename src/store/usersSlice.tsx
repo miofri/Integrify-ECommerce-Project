@@ -19,7 +19,6 @@ export const usersSlice = createSlice({
     });
     builder.addCase(waitUsersThunk.fulfilled, (state, action) => {
       state.status = "succeeded";
-
       state.users = action.payload;
     });
     builder.addCase(waitUsersThunk.rejected, (state, action) => {

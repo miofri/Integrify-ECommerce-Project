@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { RegisterUser, UpdateUser } from "../../../interface/UserInfoInterface";
+import { UpdateUser } from "../../../interface/UserInfoInterface";
 
 export const putUsersThunk = createAsyncThunk(
-  "users/updateUsers",
+  "users/waitUsers",
   async (updatedUser: UpdateUser) => {
     const response = await axios.put(
       `https://api.escuelajs.co/api/v1/users/${updatedUser.id}`,
