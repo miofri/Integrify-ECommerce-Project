@@ -11,7 +11,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { useHandleGoToHomePage } from "../../utils/buttonNavigate";
+import {
+  useHandleGoToHomePage,
+  useHandleGoToProfilePage,
+} from "../../utils/buttonNavigate";
 import { UpdateUser } from "../../interface/UserInfoInterface";
 import { useAppDispatch } from "../../store/hooks";
 import { RootState } from "../../store/store";
@@ -24,6 +27,8 @@ import {
 import { HeaderBar } from "../header/HeaderAppBar";
 import { UpdateProduct } from "./adminFeatures/UpdateProduct";
 import { CreateProduct } from "./adminFeatures/CreateProduct";
+import { LoginOutlined } from "@mui/icons-material";
+import { LoginPage } from "./LoginPage";
 
 export const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
@@ -38,10 +43,9 @@ export const Profile = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleGoToHomePage = useHandleGoToHomePage();
-
   if (!user.loggedIn) {
     navigate("/login");
-    return null;
+    return <LoginPage />;
   }
 
   const handleChangeDetail = () => {
