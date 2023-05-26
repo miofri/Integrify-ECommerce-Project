@@ -1,4 +1,4 @@
-export interface AllProductsInterface {
+export interface Products {
   id: number;
   title: string;
   price: number;
@@ -18,7 +18,7 @@ export interface Category {
 }
 
 export interface ProductState {
-  products: AllProductsInterface[];
+  products: Products[];
   status?: string;
   error?: string;
 }

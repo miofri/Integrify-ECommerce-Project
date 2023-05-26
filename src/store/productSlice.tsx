@@ -1,9 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import {
-  AllProductsInterface,
-  ProductState,
-} from "../interface/ProductsInterface";
+import { Products, ProductState } from "../interface/ProductsInterface";
 import { waitProductsThunk } from "./thunksFunctions/productsThunks/waitProductsThunk";
 
 let productsInitialValue: ProductState = {
@@ -16,7 +13,7 @@ export const productSlice = createSlice({
   name: "product",
   initialState: productsInitialValue,
   reducers: {
-    setProduct: (state, action: PayloadAction<AllProductsInterface[]>) => {
+    setProduct: (state, action: PayloadAction<Products[]>) => {
       state.products = action.payload;
     },
   },

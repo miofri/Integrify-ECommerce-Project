@@ -9,21 +9,21 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 import { cartSlice } from "../../store/cartSlice";
 import { store } from "../../store/store";
 
 interface Product {
-  currentItems: AllProductsInterface[];
+  currentItems: Products[];
 }
 
 export const CategoryGrid = ({ currentItems }: Product) => {
-  const handleAddToCart = (data: AllProductsInterface) => {
+  const handleAddToCart = (data: Products) => {
     store.dispatch(cartSlice.actions.addProduct(data));
   };
   return (
     <>
-      {currentItems.map((data: AllProductsInterface) => (
+      {currentItems.map((data: Products) => (
         <Grid key={data.id} item xs={4}>
           <Card sx={{ maxWidth: "sm" }}>
             <CardMedia

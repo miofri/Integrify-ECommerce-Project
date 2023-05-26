@@ -11,13 +11,12 @@ import {
 } from "@mui/material";
 import { v4 as uuid } from "uuid";
 
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 import { useHandleGoBackOnePage } from "../../utils/buttonNavigate";
 import { ContainerStyleSmall } from "../../theme/commonThemes";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { cartSlice } from "../../store/cartSlice";
 import { store } from "../../store/store";
-import { randomInt } from "crypto";
 
 export const defaultState = {
   id: 0,
@@ -38,12 +37,11 @@ export const defaultState = {
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();
-  const [singleProduct, setSingleProduct] =
-    useState<AllProductsInterface>(defaultState);
+  const [singleProduct, setSingleProduct] = useState<Products>(defaultState);
   const url = `https://api.escuelajs.co/api/v1/products/${productId}`;
   const handleGoBackOnePage = useHandleGoBackOnePage();
 
-  const handleAddToCart = (data: AllProductsInterface) => {
+  const handleAddToCart = (data: Products) => {
     store.dispatch(cartSlice.actions.addProduct(data));
   };
 

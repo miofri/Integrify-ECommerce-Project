@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, store } from "../../../store/store";
-import { AllProductsInterface } from "../../../interface/ProductsInterface";
+import { Products } from "../../../interface/ProductsInterface";
 import { Category } from "../../../interface/SingleProductInterface";
 import { useAppDispatch } from "../../../store/hooks";
 import { updateProductThunk } from "../../../store/thunksFunctions/productsThunks/updateProductThunk";
@@ -46,7 +46,7 @@ export const UpdateProduct = () => {
     setImages({ ...images, [imgName]: imgVal });
   };
 
-  const handleReplaceImage = (productToUpdate: AllProductsInterface) => {
+  const handleReplaceImage = (productToUpdate: Products) => {
     /* This is to replace corresponding image with the correct index.
     For example if there's [img1, img2, img3] and we only want to replace only
     the 2nd image. */
@@ -78,8 +78,9 @@ export const UpdateProduct = () => {
 
   const handleFindProduct = (id: number) => {
     const IdProductToUpdate = id;
-    const findProductToUpdate: AllProductsInterface | undefined =
-      selectProduct.find((prod) => prod.id === Number(IdProductToUpdate));
+    const findProductToUpdate: Products | undefined = selectProduct.find(
+      (prod) => prod.id === Number(IdProductToUpdate)
+    );
     if (!findProductToUpdate) {
       window.alert("Product not found!");
       return;
@@ -88,9 +89,7 @@ export const UpdateProduct = () => {
     }
   };
   const handleConsolidateObject = () => {
-    const findProduct: AllProductsInterface | void = handleFindProduct(
-      values.id
-    );
+    const findProduct: Products | void = handleFindProduct(values.id);
     if (!findProduct) return;
 
     const productToUpdate = { ...findProduct };
@@ -121,9 +120,7 @@ export const UpdateProduct = () => {
     if (updateImgValues?.id === undefined) {
       return window.alert("Product not found!");
     }
-    const findProduct: AllProductsInterface | void = handleFindProduct(
-      updateImgValues.id
-    );
+    const findProduct: Products | void = handleFindProduct(updateImgValues.id);
     if (findProduct === undefined) {
       return;
     }

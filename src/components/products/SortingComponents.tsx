@@ -20,14 +20,12 @@ import {
   handleSortByPriceAscending,
   handleSortByPriceDescending,
 } from "./sortingFunctions";
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 
 interface SortByNameOrPriceProps {
-  products: AllProductsInterface[];
-  setProducts: React.Dispatch<React.SetStateAction<AllProductsInterface[]>>;
-  setSortedProducts: React.Dispatch<
-    React.SetStateAction<AllProductsInterface[]>
-  >;
+  products: Products[];
+  setProducts: React.Dispatch<React.SetStateAction<Products[]>>;
+  setSortedProducts: React.Dispatch<React.SetStateAction<Products[]>>;
 }
 
 export const SortByNameOrPrice = ({

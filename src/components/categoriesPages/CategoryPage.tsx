@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Grid } from "@mui/material";
 
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { CategoryGrid } from "./CategoryGrid";
 import { useAppDispatch } from "../../store/hooks";
 import { ItemsInCategoryThunk } from "../../store/thunksFunctions/categoriesThunks/ItemsInCategoryThunk";
 
 export const CategoryPage = () => {
-  const [currentItems, setCurrentItems] = useState<AllProductsInterface[]>([]);
+  const [currentItems, setCurrentItems] = useState<Products[]>([]);
   const { categoryId } = useParams<{ categoryId: string }>();
   const url = `https://api.escuelajs.co/api/v1/products/?categoryId=${categoryId}`;
   const dispatch = useAppDispatch();

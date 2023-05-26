@@ -1,7 +1,7 @@
-import { AllProductsInterface } from "./ProductsInterface";
+import { Products } from "./ProductsInterface";
 
 export interface CartInterface {
-  product: AllProductsInterface;
+  product: Products;
   quantity: number;
 }
 

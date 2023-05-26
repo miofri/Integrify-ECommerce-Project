@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Box, Container, Typography } from "@mui/material";
 
 import { RootState } from "../../store/store";
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { SortByNameOrPrice, SortByPriceRange } from "./SortingComponents";
 import { ProductListGrid } from "./ProductListGrid";
@@ -16,10 +16,9 @@ export const AllProductsPage = () => {
     (product) => product
   );
   const productFromStore = useSelector(selectProduct).products;
-  const [products, setProducts] =
-    useState<AllProductsInterface[]>(productFromStore);
+  const [products, setProducts] = useState<Products[]>(productFromStore);
   const [sortedProducts, setSortedProducts] =
-    useState<AllProductsInterface[]>(productFromStore);
+    useState<Products[]>(productFromStore);
 
   useEffect(() => {
     setProducts(productFromStore);

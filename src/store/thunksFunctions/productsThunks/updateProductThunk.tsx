@@ -1,15 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import React from "react";
-import {
-  AllProductsInterface,
-  Category,
-} from "../../../interface/ProductsInterface";
+import { Products, Category } from "../../../interface/ProductsInterface";
 import { optionalId } from "../../../interface/UpdateProductInterface";
 import axios from "axios";
 
 export const updateProductThunk = createAsyncThunk(
   "product/updateProduct",
-  async (productToUpdate: AllProductsInterface) => {
+  async (productToUpdate: Products) => {
     const url = `https://api.escuelajs.co/api/v1/products/${productToUpdate.id}`;
     const productCopy = { ...(productToUpdate as optionalId) };
     delete productCopy.id;

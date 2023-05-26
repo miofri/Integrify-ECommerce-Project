@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { RootState, store } from "../../store/store";
 
 import { cartSlice } from "../../store/cartSlice";
-import { AllProductsInterface } from "../../interface/ProductsInterface";
+import { Products } from "../../interface/ProductsInterface";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { mainTheme } from "../../theme/commonThemes";
 
@@ -41,13 +41,13 @@ export const CartModal = () => {
   const selectCart = createSelector(selectCartState, (cart) => cart);
   const cartFromStore = useSelector(selectCart).cartItems;
 
-  const handleCartItemDelete = (data: AllProductsInterface) => {
+  const handleCartItemDelete = (data: Products) => {
     store.dispatch(cartSlice.actions.deleteProduct(data));
   };
-  const handleAddItem = (data: AllProductsInterface) => {
+  const handleAddItem = (data: Products) => {
     store.dispatch(cartSlice.actions.addProduct(data));
   };
-  const handleReduceQuantity = (data: AllProductsInterface) => {
+  const handleReduceQuantity = (data: Products) => {
     const item = cartFromStore.find(
       (cartData) => cartData.product.id === data.id
     );
