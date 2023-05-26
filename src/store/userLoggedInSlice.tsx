@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { UserCredentials, UserLoggedIn } from "../interface/UserInfoInterface";
 import { store } from "./store";
@@ -17,7 +17,7 @@ export const LoggedInUserSlice = createSlice({
   name: "loggedInUser",
   initialState: userInitialState,
   reducers: {
-    setLoggedUser: (state, action) => {
+    setLoggedUser: (state, action: PayloadAction<UserLoggedIn>) => {
       const { id, email, password, name, role, avatar, loggedIn } =
         action.payload;
       state.id = id;
