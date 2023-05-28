@@ -5,11 +5,14 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-v.4-green)
 ![MUI](https://img.shields.io/badge/MUI-v.5.13.2-blue)
 
-E-Commerce project for Integrify's front-end module. This project is deployed in [vercel](https://fs15-frontend-project-one.vercel.app).
+E-Commerce project for Integrify's front-end module. This project is deployed in [vercel](https://fs15-frontend-project-one.
+vercel.app).
+
+This project uses [Platzi Fake Store API](https://fakeapi.platzi.com/) which allows API users to do create, update, and delete requests for usernames and products, which may lead to broken images or nonsensical names/descriptions. 
 
 ## Learning outcome
-- Learned how to use Redux, why and when we should use is vs useState for example.
-- Deepened my undestanding of Typescript and why it's beneficial
+- Learned how to use Redux, why and when we should use it vs useState.
+- Deepened my undestanding of Typescript and why it's beneficial.
 - Learned more about MUI & enjoyed the ease of use that comes with it.
 
 ## Project requirements
