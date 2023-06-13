@@ -10,13 +10,12 @@ import { LoggedInUserSlice } from "../../store/userLoggedInSlice";
 import { HeaderBar } from "../header/HeaderAppBar";
 import { ContainerStyleSmall } from "../../theme/commonThemes";
 
-const selectUserState = (state: RootState) => state.users;
-const selectUser = createSelector(selectUserState, (users) => users);
-
 export const LoginPage = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [submittedPassword, setSubmittedPassword] = useState("");
 
+  const selectUserState = (state: RootState) => state.users;
+  const selectUser = createSelector(selectUserState, (users) => users);
   const usersFromStore = useSelector(selectUser);
   const navigate = useNavigate();
 

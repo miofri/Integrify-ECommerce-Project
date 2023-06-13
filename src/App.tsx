@@ -8,10 +8,10 @@ import { CategoryPage } from "./components/categoriesPages/CategoryPage";
 import { AllProductsPage } from "./components/products/AllProductsPage";
 import { SingleProduct } from "./components/products/SingleProduct";
 import { LoginPage } from "./components/user/LoginPage";
-import { waitProductsThunk } from "./store/thunksFunctions/productsThunks/waitProductsThunk";
+import { fetchProductsThunk } from "./store/thunksFunctions/productsThunks/fetchProductsThunk";
 import { useAppDispatch } from "./store/hooks";
 import { Profile } from "./components/user/ProfilePage";
-import { waitUsersThunk } from "./store/thunksFunctions/userThunks/waitUsersThunk";
+import { fetchUsersThunk } from "./store/thunksFunctions/userThunks/fetchUsersThunk";
 import { RegisterPage } from "./components/user/RegisterPage";
 
 const App = () => {
@@ -19,12 +19,12 @@ const App = () => {
 
   /* using setInterval because sometimes products are NOT up to date */
   useEffect(() => {
-    dispatch(waitProductsThunk());
-    dispatch(waitUsersThunk());
+    dispatch(fetchProductsThunk());
+    dispatch(fetchUsersThunk());
 
     // const interval = setInterval(() => {
     //   dispatch(waitProductsThunk());
-    //   dispatch(waitUsersThunk());
+    //   dispatch(fetchUsersThunk());
     // }, 30000);
     // return () => clearInterval(interval);
   }, []);

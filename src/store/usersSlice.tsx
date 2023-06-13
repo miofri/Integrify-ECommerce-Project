@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { UserCredentials, Users } from "../interface/UserInfoInterface";
-import { waitUsersThunk } from "./thunksFunctions/userThunks/waitUsersThunk";
+import { fetchUsersThunk } from "./thunksFunctions/userThunks/fetchUsersThunk";
 
 let usersInitialValue: Users = { users: [] };
 
@@ -14,17 +14,17 @@ export const usersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(waitUsersThunk.pending, (state) => {
+    builder.addCase(fetchUsersThunk.pending, (state) => {
       state.status = "loading";
     });
     builder.addCase(
-      waitUsersThunk.fulfilled,
+      fetchUsersThunk.fulfilled,
       (state, action: PayloadAction<UserCredentials[]>) => {
         state.status = "succeeded";
         state.users = action.payload;
       }
     );
-    builder.addCase(waitUsersThunk.rejected, (state, action) => {
+    builder.addCase(fetchUsersThunk.rejected, (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     });

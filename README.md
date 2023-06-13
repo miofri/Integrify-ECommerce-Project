@@ -7,9 +7,10 @@
 
 E-Commerce project for Integrify's front-end module. This project is deployed in [vercel](https://fs15-frontend-project-one.vercel.app).
 
-This project uses [Platzi Fake Store API](https://fakeapi.platzi.com/) which allows API users to do create, update, and delete requests for usernames and products, which may lead to broken images or nonsensical names/descriptions. 
+This project uses [Platzi Fake Store API](https://fakeapi.platzi.com/) which allows API users to do create, update, and delete requests for usernames and products, which may lead to broken images or nonsensical names/descriptions.
 
 ## Learning outcome
+
 - Learned how to use Redux, why and when we should use it vs useState.
 - Deepened my undestanding of Typescript and why it's beneficial.
 - Learned more about MUI & enjoyed the ease of use that comes with it.
@@ -18,10 +19,10 @@ This project uses [Platzi Fake Store API](https://fakeapi.platzi.com/) which all
 
 > 1. Use the API endpoint [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/) to create an e-commerce website. Read the documentation and learn how to use the different endpoints.
 > 2. Create at lease 4 pages (can be more if you want): Home page, product page,
-> profile page (only available if user logins), and cart page (cart could be a page or a modal)
+>    profile page (only available if user logins), and cart page (cart could be a page or a modal)
 > 3. Create Redux store for following features:
 >    - product reducer: get all products, find a single products, sort products by
->    categories, sort products by price. Create, update and delete a product (enable update & delete features only for admin of the webapp. For example, you can check if user is your admin account before let them delete product)
+>      categories, sort products by price. Create, update and delete a product (enable update & delete features only for admin of the webapp. For example, you can check if user is your admin account before let them delete product)
 >    - user reducer: Register and Login
 >    - cart reducer: add product to cart, remove products, update products's quantity in cart
 > 4. When adding routers to your application, programatically set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { Products, ProductState } from "../interface/ProductsInterface";
-import { waitProductsThunk } from "./thunksFunctions/productsThunks/waitProductsThunk";
+import { fetchProductsThunk } from "./thunksFunctions/productsThunks/fetchProductsThunk";
 
 let productsInitialValue: ProductState = {
   products: [],
@@ -18,15 +18,15 @@ export const productSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(waitProductsThunk.pending, (state) => {
+    builder.addCase(fetchProductsThunk.pending, (state) => {
       state.status = "loading";
     });
-    builder.addCase(waitProductsThunk.fulfilled, (state, action) => {
+    builder.addCase(fetchProductsThunk.fulfilled, (state, action) => {
       state.status = "succeeded";
 
       state.products = action.payload;
     });
-    builder.addCase(waitProductsThunk.rejected, (state, action) => {
+    builder.addCase(fetchProductsThunk.rejected, (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     });
